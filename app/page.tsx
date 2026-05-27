@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Bot, Brain, CheckCircle2, Code2, Database, Globe2, LayoutDashboard, Search, Smartphone, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Code2, Database, Globe2, LayoutDashboard, Search, Smartphone } from "lucide-react";
 import { MotionDiv, MotionSection, fadeUp, viewport } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { ProjectImage } from "@/components/project-image";
@@ -24,13 +24,6 @@ const serviceVisuals = [
   { icon: Database, color: "from-emerald-400 to-teal-500" },
   { icon: Smartphone, color: "from-sky-400 to-indigo-500" },
   { icon: Search, color: "from-rose-400 to-red-500" }
-];
-
-const trainingHighlights = [
-  { label: "Basic tech skills", icon: Code2 },
-  { label: "Web design", icon: Sparkles },
-  { label: "Basic AI skills", icon: Brain },
-  { label: "AI automation", icon: Bot }
 ];
 
 export default function HomePage() {
@@ -252,70 +245,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-14 sm:py-16">
-        <div className="container-page grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
-          <MotionDiv initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.65 }} className="grid content-between gap-8 border border-[color:var(--line)] bg-[color:var(--surface)] p-7 shadow-[var(--shadow)] sm:p-10">
-            <div>
-              <p className="eyebrow">Summer Creative Tech Camp</p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">
-                Limited-time creative tech training for children aged 10-18.
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for web design, AI tools, automation and digital creativity.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="/training">Enroll Your Child</Button>
-                <Button href="/contact" variant="secondary">
-                  Ask About Camp
-                </Button>
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              {trainingHighlights.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div key={item.label} className="flex items-center gap-3 border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-4">
-                    <div className="grid h-10 w-10 shrink-0 place-items-center bg-gradient-to-br from-sky-400 via-fuchsia-400 to-amber-300 text-white">
-                      <Icon size={18} />
-                    </div>
-                    <p className="text-sm font-semibold">{item.label}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </MotionDiv>
-
-          <MotionDiv initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.65, delay: 0.06 }} className="grid gap-5 sm:grid-cols-2">
-            <div className="relative min-h-[280px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)] sm:min-h-full">
-              <Image
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80"
-                alt="Children learning with laptops in a classroom"
-                fill
-                sizes="(min-width: 1024px) 28vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="grid gap-5">
-              <div className="border border-[color:var(--line)] bg-gradient-to-br from-sky-500 via-fuchsia-500 to-amber-300 p-6 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Starts July 6, 2026</p>
-                <p className="mt-8 text-3xl font-semibold tracking-[-0.04em]">Remote worldwide lessons with creative projects and clear guidance.</p>
-              </div>
-              <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
-                <Image
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-                  alt="Student using a laptop for digital learning"
-                  fill
-                  sizes="(min-width: 1024px) 28vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </MotionDiv>
         </div>
       </section>
 

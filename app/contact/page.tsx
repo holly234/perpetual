@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CalendarDays, Mail, MapPin, MessageSquare } from "lucide-react";
+import { CalendarDays, Camera, Mail, MapPin, MessageSquare, Music2 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { MotionDiv, fadeUp } from "@/components/motion";
 
@@ -31,6 +31,29 @@ export default function ContactPage() {
               <p className="mt-6 text-sm font-semibold text-[color:var(--muted)]">Email</p>
               <a href="mailto:perpetualdev2@gmail.com" className="mt-2 block break-words text-lg font-semibold">
                 perpetualdev2@gmail.com
+              </a>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+              <a
+                href="https://www.instagram.com/perpetual_devs"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-6 transition hover:-translate-y-1 hover:shadow-[var(--shadow)]"
+              >
+                <Camera className="text-[color:var(--accent)]" size={20} />
+                <h2 className="mt-5 font-semibold">Instagram</h2>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">@perpetual_devs</p>
+              </a>
+              <a
+                href="https://www.tiktok.com/@perpetual_devs"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-6 transition hover:-translate-y-1 hover:shadow-[var(--shadow)]"
+              >
+                <Music2 className="text-[color:var(--accent)]" size={20} />
+                <h2 className="mt-5 font-semibold">TikTok</h2>
+                <p className="mt-2 text-sm leading-6 text-[color:var(--muted)]">@perpetual_devs</p>
               </a>
             </div>
 

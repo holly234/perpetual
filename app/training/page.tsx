@@ -1,47 +1,92 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Bot, Brain, CheckCircle2, Code2, Globe2, Laptop, MonitorPlay, Sparkles, Wifi } from "lucide-react";
+import {
+  ArrowUpRight,
+  Award,
+  CalendarDays,
+  Clock,
+  Code2,
+  Globe2,
+  ImageIcon,
+  Laptop,
+  LayoutTemplate,
+  MonitorPlay,
+  Palette,
+  Rocket,
+  Sparkles,
+  Target,
+  Users,
+  Wifi
+} from "lucide-react";
 import { MotionDiv, fadeUp, viewport } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 
 const modules = [
   {
-    title: "Basic tech skills",
-    text: "Computer confidence, typing, file organization, internet safety and practical digital habits.",
-    icon: Laptop,
+    title: "Website design basics",
+    text: "How websites are structured, how pages are planned, and how young learners can design with Mobirise.",
+    icon: LayoutTemplate,
     color: "from-sky-400 to-cyan-300",
     tint: "bg-sky-50 text-sky-950 dark:bg-sky-950/35 dark:text-sky-100"
   },
   {
-    title: "Web design",
-    text: "How websites work, simple page layouts, visual structure and beginner-friendly HTML/CSS ideas.",
+    title: "Creative page layouts",
+    text: "Color, spacing, sections, buttons, images and simple page ideas for clean beginner-friendly websites.",
     icon: Code2,
     color: "from-fuchsia-400 to-pink-400",
     tint: "bg-fuchsia-50 text-fuchsia-950 dark:bg-fuchsia-950/35 dark:text-fuchsia-100"
   },
   {
-    title: "Basic AI skills",
-    text: "Using AI tools responsibly for learning, writing, research, creativity and school-friendly tasks.",
-    icon: Brain,
+    title: "AI image generation",
+    text: "How to create fun visual ideas with AI image tools using clear prompts and creative direction.",
+    icon: ImageIcon,
     color: "from-amber-300 to-orange-400",
     tint: "bg-amber-50 text-amber-950 dark:bg-amber-950/35 dark:text-amber-100"
   },
   {
-    title: "AI automation",
-    text: "Simple automation thinking: prompts, workflows, digital assistants and smart problem-solving.",
-    icon: Bot,
+    title: "Creative presentation",
+    text: "How to combine layouts and AI-generated visuals into simple creative website concepts.",
+    icon: Palette,
     color: "from-emerald-300 to-teal-400",
     tint: "bg-emerald-50 text-emerald-950 dark:bg-emerald-950/35 dark:text-emerald-100"
   }
 ];
 
-const outcomes = [
-  "Stronger computer confidence",
-  "Better digital creativity",
-  "Beginner web design foundation",
-  "Responsible AI tool use",
-  "Clear problem-solving habits",
-  "Guided practical projects"
+const parentReasons = [
+  {
+    title: "Personalized attention",
+    text: "Small class sizes ensure every child gets the guidance and support they deserve.",
+    icon: Users
+  },
+  {
+    title: "Real creative projects",
+    text: "Kids build real websites, create AI-generated art and work on fun projects they will be proud to share.",
+    icon: Code2
+  },
+  {
+    title: "Designed for focus",
+    text: "Lessons are carefully paced to match attention spans and build confidence step by step.",
+    icon: Target
+  },
+  {
+    title: "Learn from anywhere",
+    text: "The program is 100% online and interactive, perfect for busy families and summer travel.",
+    icon: Globe2
+  },
+  {
+    title: "Future-ready skills",
+    text: "Website design and creative AI skills prepare kids for the digital future they are stepping into.",
+    icon: Rocket
+  }
+];
+
+const programDetails = [
+  { label: "Starts", value: "July 6, 2026", icon: CalendarDays },
+  { label: "Schedule", value: "2 classes / week, 1-1.5 hrs / session", icon: Clock },
+  { label: "Duration", value: "2 months", icon: CalendarDays },
+  { label: "Certificate", value: "Completion included", icon: Award },
+  { label: "Requirement", value: "Laptop and internet connection", icon: Laptop },
+  { label: "Batch size", value: "Small and focused, limited slots only", icon: Users }
 ];
 
 const learningModes = [
@@ -72,7 +117,7 @@ export default function TrainingPage() {
                 Limited-time creative tech training for children aged 10-18.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for fun, guided lessons in web design, AI tools, automation and digital creativity.
+                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for fun, guided lessons in Mobirise website design and AI image generation.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button href="/contact">Enroll Your Child</Button>
@@ -89,7 +134,7 @@ export default function TrainingPage() {
               {[
                 ["Ages", "10-18"],
                 ["Starts", "July 6, 2026"],
-                ["Access", "Remote worldwide"]
+                ["Price", "$120 full program"]
               ].map(([title, text]) => (
                 <div key={title} className="relative border border-white/70 bg-white/75 p-4 shadow-sm dark:border-white/10 dark:bg-black/20">
                   <p className="font-semibold">{title}</p>
@@ -102,8 +147,8 @@ export default function TrainingPage() {
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="relative min-h-[280px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)] sm:min-h-full">
               <Image
-                src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=80"
-                alt="Children learning with laptops in a classroom"
+                src="/assets/summer-camp-hero.png"
+                alt="Cartoon children joining a remote creative tech camp"
                 fill
                 priority
                 sizes="(min-width: 1024px) 28vw, 100vw"
@@ -118,22 +163,123 @@ export default function TrainingPage() {
             <div className="grid gap-5">
               <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-                  alt="Student using a laptop for digital learning"
+                  src="/assets/summer-camp-website-design.png"
+                  alt="Cartoon child designing a website with drag-and-drop blocks"
                   fill
                   sizes="(min-width: 1024px) 28vw, 100vw"
                   className="object-cover"
                 />
               </div>
-              <div className="border border-[color:var(--line)] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-300 p-6 text-white">
-                <Sparkles size={22} />
-                <p className="mt-8 text-3xl font-semibold tracking-[-0.04em]">
-                  Bright lessons. Practical projects. Better digital confidence.
-                </p>
+              <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
+                <Image
+                  src="/assets/summer-camp-ai-images.png"
+                  alt="Cartoon child creating colorful AI-generated images"
+                  fill
+                  sizes="(min-width: 1024px) 28vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-fuchsia-950/60 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <Sparkles size={22} />
+                  <p className="mt-3 text-2xl font-semibold tracking-[-0.04em]">
+                    Website design plus AI image creativity.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </MotionDiv>
+      </section>
+
+      <section className="container-page pb-12 sm:pb-16">
+        <div className="grid gap-5 lg:grid-cols-[0.94fr_1.06fr]">
+          <MotionDiv
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="border border-[color:var(--line)] bg-[color:var(--surface)] p-7 shadow-[var(--shadow)] sm:p-8"
+          >
+            <p className="eyebrow">Why parents choose us</p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+              Small, focused and built around real creative output.
+            </h2>
+
+            <div className="mt-7 grid gap-3">
+              {parentReasons.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div key={item.title} className="flex gap-4 border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-4">
+                    <div className="grid h-11 w-11 shrink-0 place-items-center bg-violet-100 text-violet-700 dark:bg-violet-950/50 dark:text-violet-200">
+                      <Icon size={19} />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">{item.text}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </MotionDiv>
+
+          <MotionDiv
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            variants={fadeUp}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="grid content-between gap-5"
+          >
+            <div className="border border-[color:var(--line)] bg-gradient-to-br from-violet-600 via-purple-600 to-fuchsia-500 p-7 text-white shadow-[var(--shadow)] sm:p-8">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Program details</p>
+              <div className="mt-6 grid gap-3">
+                {programDetails.map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div key={item.label} className="grid gap-3 border border-white/20 bg-white/10 p-4 sm:grid-cols-[auto_0.72fr_1.28fr] sm:items-center">
+                      <Icon size={18} className="text-yellow-300" />
+                      <p className="text-sm font-bold uppercase tracking-[0.12em] text-white/75">{item.label}</p>
+                      <p className="font-semibold">{item.value}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="grid gap-4 border border-[color:var(--line)] bg-[color:var(--surface)] p-5 shadow-[var(--shadow)] sm:grid-cols-[1fr_auto_1fr] sm:items-stretch">
+              <div className="bg-violet-700 p-5 text-white">
+                <p className="inline-flex bg-yellow-300 px-3 py-1 text-sm font-black uppercase tracking-tight text-slate-950">Summer special</p>
+                <p className="mt-5 text-6xl font-semibold tracking-[-0.06em]">$120</p>
+                <p className="mt-2 text-sm font-bold uppercase tracking-[0.12em] text-yellow-200">Full 2-month program</p>
+              </div>
+              <div className="grid place-items-center">
+                <span className="grid h-14 w-14 place-items-center rounded-full bg-yellow-300 text-xl font-black text-slate-950">VS</span>
+              </div>
+              <div className="border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--muted)]">Regular price</p>
+                <p className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-violet-700 dark:text-violet-200">$150</p>
+                <p className="mt-2 text-sm font-semibold text-[color:var(--muted)]">USD / month</p>
+                <p className="mt-4 text-sm leading-6 text-[color:var(--muted)]">Regular mentorship programs start at $150 per month.</p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 border border-[color:var(--line)] bg-yellow-50 p-5 dark:bg-yellow-950/25 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <h3 className="text-2xl font-semibold tracking-tight">Spaces are limited.</h3>
+                <p className="mt-2 leading-7 text-[color:var(--muted)]">
+                  Book your child&apos;s slot today and let them create, design and grow.
+                </p>
+              </div>
+              <Link href="/contact" className="btn bg-yellow-300 text-slate-950 hover:opacity-90">
+                Book Slots Now <ArrowUpRight size={16} className="ml-2" />
+              </Link>
+            </div>
+          </MotionDiv>
+        </div>
       </section>
 
       <section className="container-page pb-12 sm:pb-16">
@@ -169,11 +315,11 @@ export default function TrainingPage() {
             <div>
               <p className="eyebrow">Summer program</p>
               <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Creative digital skills for a brighter summer.
+                Website design and AI image creativity for a brighter summer.
               </h2>
             </div>
             <p className="max-w-2xl leading-7 text-[color:var(--muted)] lg:justify-self-end">
-              The limited-time program is beginner-friendly and practical, with colorful lessons children can understand, practice and build on from anywhere.
+              The limited-time program is beginner-friendly and practical, with colorful lessons on designing simple websites in Mobirise and creating images with AI.
             </p>
           </div>
 
@@ -206,42 +352,6 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      <section className="container-page pb-24">
-        <div className="grid gap-5 lg:grid-cols-[0.78fr_1.22fr]">
-          <div className="border border-[color:var(--line)] bg-[color:var(--surface)] p-7 sm:p-8">
-            <p className="eyebrow">Outcomes</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-              Skills they can keep using.
-            </h2>
-            <p className="mt-5 leading-8 text-[color:var(--muted)]">
-              The goal is not to overwhelm children with theory. It is to help them become more confident, curious and capable with useful digital tools, wherever they are learning from.
-            </p>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            {outcomes.map((item) => (
-              <div key={item} className="flex items-center gap-3 border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-4">
-                <CheckCircle2 size={18} className="shrink-0 text-emerald-500" />
-                <p className="text-sm font-semibold">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="relative mt-8 overflow-hidden border border-[color:var(--line)] bg-gradient-to-r from-sky-500 via-fuchsia-500 to-amber-300 p-8 text-white sm:p-10 lg:p-14">
-          <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Start with a conversation</p>
-              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Ready to enroll your child before the July 6 start date?
-              </h2>
-            </div>
-            <Link href="/contact" className="btn bg-white text-slate-950 hover:opacity-90">
-              Enroll Your Child <ArrowUpRight size={16} className="ml-2" />
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Bot, Brain, Code2, Sparkles, Wand2, X } from "lucide-react";
+import { Code2, ImageIcon, Sparkles, Wand2, X } from "lucide-react";
 
 const trainingPoints = [
-  { label: "Basic tech skills", icon: Code2 },
-  { label: "Web design", icon: Sparkles },
-  { label: "Basic AI skills", icon: Brain },
-  { label: "AI automation", icon: Bot }
+  { label: "Website design", icon: Code2 },
+  { label: "Creative layouts", icon: Sparkles },
+  { label: "AI image generation", icon: ImageIcon }
 ];
 
 export function KidsTrainingPopup() {
@@ -40,10 +39,10 @@ export function KidsTrainingPopup() {
                 Limited-time creative tech training for children aged 10-18.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-[color:var(--muted)] sm:text-base sm:leading-7">
-                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for fun, guided lessons in web design, AI tools, automation and digital creativity.
+                Remote worldwide summer training starts July 6, 2026. Summer special: $120 for the full 2-month program. Limited slots available.
               </p>
 
-              <div className="mt-4 grid gap-2 sm:grid-cols-4">
+              <div className="mt-4 grid gap-2 sm:grid-cols-3">
                 {trainingPoints.map((item) => {
                   const Icon = item.icon;
 

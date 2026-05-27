@@ -259,17 +259,17 @@ export default function HomePage() {
         <div className="container-page grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
           <MotionDiv initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.65 }} className="grid content-between gap-8 border border-[color:var(--line)] bg-[color:var(--surface)] p-7 shadow-[var(--shadow)] sm:p-10">
             <div>
-              <p className="eyebrow">Kids tech training</p>
+              <p className="eyebrow">Summer Creative Tech Camp</p>
               <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">
-                Fun remote tech training for children aged 10-18.
+                Limited-time creative tech training for children aged 10-18.
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                Beginner-friendly online lessons in computer confidence, web design, AI tools and simple automation ideas for young learners worldwide.
+                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for web design, AI tools, automation and digital creativity.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="/training">View Training</Button>
+                <Button href="/training">Enroll Your Child</Button>
                 <Button href="/contact" variant="secondary">
-                  Ask About It
+                  Ask About Camp
                 </Button>
               </div>
             </div>
@@ -302,8 +302,8 @@ export default function HomePage() {
             </div>
             <div className="grid gap-5">
               <div className="border border-[color:var(--line)] bg-gradient-to-br from-sky-500 via-fuchsia-500 to-amber-300 p-6 text-white">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Remote worldwide</p>
-                <p className="mt-8 text-3xl font-semibold tracking-[-0.04em]">Simple live lessons with useful projects and clear guidance.</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Starts July 6, 2026</p>
+                <p className="mt-8 text-3xl font-semibold tracking-[-0.04em]">Remote worldwide lessons with creative projects and clear guidance.</p>
               </div>
               <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
                 <Image

@@ -66,18 +66,18 @@ export default function TrainingPage() {
             <div className="absolute left-0 top-0 h-2 w-full bg-gradient-to-r from-sky-400 via-fuchsia-400 via-amber-300 to-emerald-400" />
             <div>
               <p className="relative inline-flex border border-[color:var(--line)] bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-sky-700 dark:bg-black/20 dark:text-sky-200">
-                Remote kids tech training
+                Summer Creative Tech Camp
               </p>
               <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-7xl">
-                Fun tech skills for children aged 10-18, anywhere in the world.
+                Limited-time creative tech training for children aged 10-18.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
-                Live remote training in basic computer confidence, web design, beginner AI skills and simple automation thinking for young learners worldwide.
+                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for fun, guided lessons in web design, AI tools, automation and digital creativity.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href="/contact">Ask About Training</Button>
+                <Button href="/contact">Enroll Your Child</Button>
                 <a
-                  href="mailto:perpetualdev2@gmail.com?subject=Kids%20Tech%20Training%20Inquiry"
+                  href="mailto:perpetualdev2@gmail.com?subject=Summer%20Creative%20Tech%20Camp%20Enrollment"
                   className="btn btn-secondary"
                 >
                   Email Us
@@ -88,8 +88,8 @@ export default function TrainingPage() {
             <div className="grid gap-3 sm:grid-cols-3">
               {[
                 ["Ages", "10-18"],
-                ["Format", "Remote live lessons"],
-                ["Reach", "Worldwide"]
+                ["Starts", "July 6, 2026"],
+                ["Access", "Remote worldwide"]
               ].map(([title, text]) => (
                 <div key={title} className="relative border border-white/70 bg-white/75 p-4 shadow-sm dark:border-white/10 dark:bg-black/20">
                   <p className="font-semibold">{title}</p>
@@ -111,8 +111,8 @@ export default function TrainingPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-sky-950/50 via-transparent to-fuchsia-500/20" />
               <div className="absolute bottom-4 left-4 right-4 border border-white/25 bg-white/88 p-4 text-slate-950 backdrop-blur dark:bg-slate-950/80 dark:text-white">
-                <p className="text-sm font-bold uppercase tracking-[0.14em] text-fuchsia-600 dark:text-fuchsia-200">Online from anywhere</p>
-                <p className="mt-2 text-2xl font-semibold tracking-[-0.03em]">Join lessons from home.</p>
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-fuchsia-600 dark:text-fuchsia-200">Starts July 6, 2026</p>
+                <p className="mt-2 text-2xl font-semibold tracking-[-0.03em]">Parents can enroll kids from anywhere.</p>
               </div>
             </div>
             <div className="grid gap-5">
@@ -167,13 +167,13 @@ export default function TrainingPage() {
         <div className="container-page">
           <div className="mb-5 grid gap-5 border border-[color:var(--line)] bg-gradient-to-r from-sky-50 via-fuchsia-50 to-amber-50 p-7 sm:p-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end dark:from-sky-950/30 dark:via-fuchsia-950/25 dark:to-amber-950/25">
             <div>
-              <p className="eyebrow">What they learn</p>
+              <p className="eyebrow">Summer program</p>
               <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                A playful foundation for today&apos;s digital world.
+                Creative digital skills for a brighter summer.
               </h2>
             </div>
             <p className="max-w-2xl leading-7 text-[color:var(--muted)] lg:justify-self-end">
-              The training is beginner-friendly and practical, with colorful lessons children can understand, practice and build on from anywhere.
+              The limited-time program is beginner-friendly and practical, with colorful lessons children can understand, practice and build on from anywhere.
             </p>
           </div>
 
@@ -233,11 +233,11 @@ export default function TrainingPage() {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/75">Start with a conversation</p>
               <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Want remote tech training for a child, from anywhere in the world?
+                Ready to enroll your child before the July 6 start date?
               </h2>
             </div>
             <Link href="/contact" className="btn bg-white text-slate-950 hover:opacity-90">
-              Ask About Training <ArrowUpRight size={16} className="ml-2" />
+              Enroll Your Child <ArrowUpRight size={16} className="ml-2" />
             </Link>
           </div>
         </div>

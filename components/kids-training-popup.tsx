@@ -34,13 +34,13 @@ export function KidsTrainingPopup() {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 border border-[color:var(--line)] bg-[color:var(--surface-muted)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--accent)]">
                 <Wand2 size={14} />
-                Kids tech training
+                Summer Creative Tech Camp
               </div>
               <h2 className="mt-4 pr-10 text-2xl font-semibold tracking-[-0.04em] sm:text-4xl">
-                Tech skills training for children aged 10-18.
+                Limited-time creative tech training for children aged 10-18.
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-[color:var(--muted)] sm:text-base sm:leading-7">
-                We teach kids practical digital skills in a simple, fun and guided way: basic computer confidence, web design, beginner-friendly AI tools and smart AI automation ideas.
+                Remote worldwide summer training starts July 6, 2026. Parents can enroll their kids for fun, guided lessons in web design, AI tools, automation and digital creativity.
               </p>
 
               <div className="mt-4 grid gap-2 sm:grid-cols-4">
@@ -59,9 +59,9 @@ export function KidsTrainingPopup() {
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <Link href="/training" onClick={() => setOpen(false)} className="btn btn-primary whitespace-nowrap">
-                View Training
+                Enroll Your Child
               </Link>
-              <a href="mailto:perpetualdev2@gmail.com?subject=Kids%20Tech%20Training%20Inquiry" className="btn btn-secondary whitespace-nowrap">
+              <a href="mailto:perpetualdev2@gmail.com?subject=Summer%20Creative%20Tech%20Camp%20Enrollment" className="btn btn-secondary whitespace-nowrap">
                 Email Us
               </a>
             </div>

@@ -9,10 +9,11 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
   { href: "/services", label: "Services" },
+  { href: "/industries", label: "Industries" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "/training", label: "Training" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ];
 
@@ -38,7 +39,7 @@ export function Navbar() {
       <nav className="container-page flex h-20 items-center justify-between gap-3 max-sm:h-[72px]">
         <Link href="/" aria-label="Perpetual Dev home" className="logo-crop shrink-0" />
 
-        <div className="hidden items-center gap-1 rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)]/72 p-1 md:flex">
+        <div className="hidden items-center gap-1 rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)]/72 p-1 lg:flex">
           {nav.map((item) => {
             const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
@@ -62,7 +63,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-[color:var(--line)] md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-[color:var(--line)] lg:hidden"
             aria-label="Toggle navigation"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
@@ -71,7 +72,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="container-page pb-4 md:hidden">
+        <div className="container-page pb-4 lg:hidden">
           <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-2 shadow-[var(--shadow)]">
             {nav.map((item) => (
               <Link

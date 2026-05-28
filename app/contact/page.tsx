@@ -1,12 +1,30 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { CalendarDays, Camera, Mail, MapPin, MessageSquare, Music2 } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { MotionDiv, fadeUp } from "@/components/motion";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "Contact Perpetual Dev",
+  description:
+    "Contact Perpetual Dev for web design, SEO optimization, booking websites, business websites and full-stack web development projects.",
+  path: "/contact"
+});
 
 export default function ContactPage() {
   return (
     <main className="pt-28">
       <section className="container-page pb-24">
+        <div className="border-b border-[color:var(--line)] pb-8 pt-10">
+          <p className="eyebrow">Contact</p>
+          <h1 className="mt-4 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-7xl">
+            Start a website, SEO or web development project.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-[color:var(--muted)]">
+            Tell us what you need built, redesigned or optimized. Perpetual Dev works with businesses worldwide.
+          </p>
+        </div>
         <MotionDiv
           initial="hidden"
           animate="visible"

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
   ArrowUpRight,
   Award,
@@ -20,6 +21,15 @@ import {
 } from "lucide-react";
 import { MotionDiv, fadeUp, viewport } from "@/components/motion";
 import { Button } from "@/components/ui/button";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "Summer Creative Tech Camp for Kids",
+  description:
+    "Remote worldwide summer training for children aged 10-18 covering Mobirise website design and AI image generation. Starts July 6, 2026.",
+  path: "/training",
+  image: "/assets/summer-camp-hero.jpg"
+});
 
 const modules = [
   {
@@ -147,7 +157,7 @@ export default function TrainingPage() {
           <div className="grid gap-5 sm:grid-cols-2">
             <div className="relative min-h-[280px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)] sm:min-h-full">
               <Image
-                src="/assets/summer-camp-hero.png"
+                src="/assets/summer-camp-hero.jpg"
                 alt="Cartoon children joining a remote creative tech camp"
                 fill
                 priority
@@ -163,7 +173,7 @@ export default function TrainingPage() {
             <div className="grid gap-5">
               <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
                 <Image
-                  src="/assets/summer-camp-website-design.png"
+                  src="/assets/summer-camp-website-design.jpg"
                   alt="Cartoon child designing a website with drag-and-drop blocks"
                   fill
                   sizes="(min-width: 1024px) 28vw, 100vw"
@@ -172,7 +182,7 @@ export default function TrainingPage() {
               </div>
               <div className="relative min-h-[220px] overflow-hidden border border-[color:var(--line)] bg-[color:var(--surface-muted)]">
                 <Image
-                  src="/assets/summer-camp-ai-images.png"
+                  src="/assets/summer-camp-ai-images.jpg"
                   alt="Cartoon child creating colorful AI-generated images"
                   fill
                   sizes="(min-width: 1024px) 28vw, 100vw"

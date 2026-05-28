@@ -1,10 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, Code2, Database, Globe2, LayoutDashboard, Search, Smartphone } from "lucide-react";
 import { MotionDiv, MotionSection, fadeUp, viewport } from "@/components/motion";
 import { Button } from "@/components/ui/button";
 import { ProjectImage } from "@/components/project-image";
+import { StructuredData } from "@/components/structured-data";
 import { projects, services, techStack } from "@/lib/data";
+import { professionalServiceSchema, seoServices } from "@/lib/seo-data";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "Web Design, SEO & Business Website Agency",
+  description:
+    "Perpetual Dev builds premium business websites, booking websites and SEO-ready web pages for small businesses, startups, schools, rentals and service companies worldwide.",
+  path: "/"
+});
 
 const stackLogos: Record<string, string> = {
   Laravel: "https://cdn.simpleicons.org/laravel/FF2D20",
@@ -29,6 +40,7 @@ const serviceVisuals = [
 export default function HomePage() {
   return (
     <main>
+      <StructuredData data={professionalServiceSchema("/")} />
       <section className="relative overflow-hidden border-b border-[color:var(--line)]">
         <Image
           src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80"
@@ -43,10 +55,10 @@ export default function HomePage() {
         <MotionDiv initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}>
           <p className="eyebrow">Full-stack web developer</p>
           <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-[-0.055em] leading-[0.98] sm:text-7xl lg:text-8xl">
-            We build modern websites & web applications.
+            Web design, SEO and business websites for growing companies.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--muted)] sm:text-xl">
-            Full-stack web developer building scalable digital experiences with Laravel, Next.js, React and WordPress.
+            Perpetual Dev designs premium websites, booking websites and SEO-ready digital experiences for small businesses, startups, schools, rental brands, restaurants and service companies worldwide.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Button href="/projects">View Our Work</Button>
@@ -117,6 +129,41 @@ export default function HomePage() {
           </div>
         </div>
       </MotionSection>
+
+      <section className="py-12 sm:py-16">
+        <div className="container-page">
+          <MotionDiv initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.65 }} className="mb-5 grid gap-5 border border-[color:var(--line)] bg-[color:var(--surface)] p-7 sm:p-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+            <div>
+              <p className="eyebrow">What we do</p>
+              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+                Clear websites for search, trust and conversion.
+              </h2>
+            </div>
+            <p className="max-w-2xl leading-7 text-[color:var(--muted)] lg:justify-self-end">
+              We help businesses improve online visibility with responsive web design, service pages, technical SEO, Google Business Profile support and booking-focused website structures.
+            </p>
+          </MotionDiv>
+
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {seoServices.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group flex min-h-48 flex-col justify-between border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow)]"
+              >
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--accent)]">Service</p>
+                  <h3 className="mt-4 text-xl font-semibold tracking-tight">{service.shortTitle}</h3>
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-[color:var(--muted)]">{service.description}</p>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
+                  View service <ArrowRight size={15} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-10 sm:py-12">
         <div className="container-page">

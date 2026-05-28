@@ -1,7 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowUpRight, Code2, Layers3, MonitorSmartphone } from "lucide-react";
 import { MotionDiv, fadeUp, viewport } from "@/components/motion";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "About Perpetual Dev",
+  description:
+    "Learn about Perpetual Dev, a premium web design and SEO-focused development studio building websites, dashboards and business systems worldwide.",
+  path: "/about"
+});
 
 const principles = [
   {

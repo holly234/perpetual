@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { MotionDiv, fadeUp, viewport } from "@/components/motion";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/lib/data";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "Web Design and Development Projects",
+  description:
+    "Explore Perpetual Dev projects across business websites, booking websites, school platforms, dashboards, ecommerce, logistics and service industries.",
+  path: "/projects"
+});
 
 export default function ProjectsPage() {
   return (

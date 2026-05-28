@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type ProjectImageProps = {
@@ -13,11 +14,12 @@ export function ProjectImage({ src, fallback, alt, className }: ProjectImageProp
   const [currentSrc, setCurrentSrc] = useState(src);
 
   return (
-    <img
+    <Image
       src={currentSrc}
       alt={alt}
+      fill
+      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
       className={className}
-      loading="lazy"
       onError={() => {
         if (fallback && currentSrc !== fallback) {
           setCurrentSrc(fallback);

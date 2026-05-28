@@ -1,8 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { ArrowUpRight, CheckCircle2, Code2, Database, Globe2, LayoutDashboard, Search, Smartphone } from "lucide-react";
 import { MotionDiv, fadeUp, viewport } from "@/components/motion";
 import { Button } from "@/components/ui/button";
+import { StructuredData } from "@/components/structured-data";
 import { services } from "@/lib/data";
+import { professionalServiceSchema, seoServices } from "@/lib/seo-data";
+import { createMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createMetadata({
+  title: "Web Design, SEO and Business Website Services",
+  description:
+    "Explore Perpetual Dev services for business website design, booking websites, SEO optimization, Google Business Profile optimization and web applications.",
+  path: "/services"
+});
 
 const serviceIcons = [Globe2, Code2, LayoutDashboard, Database, Smartphone, Search];
 
@@ -20,12 +31,13 @@ const deliverables = ["Responsive UI", "Clean codebase", "CMS-ready pages", "Per
 export default function ServicesPage() {
   return (
     <main className="pt-28">
+      <StructuredData data={professionalServiceSchema("/services")} />
       <section className="py-12 sm:py-16">
         <div className="container-page">
           <div className="mb-6 flex flex-col justify-between gap-4 border-b border-[color:var(--line)] pb-5 sm:flex-row sm:items-end">
             <div>
               <p className="eyebrow">What We Build</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">Service areas.</h2>
+              <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">Web design, SEO and website services.</h1>
             </div>
             <p className="max-w-xl leading-7 text-[color:var(--muted)]">
               Each service is shaped around clear pages, usable systems, reliable performance and a polished client-facing experience.
@@ -135,6 +147,41 @@ export default function ServicesPage() {
               </div>
             </div>
           </MotionDiv>
+        </div>
+      </section>
+
+      <section className="pb-12 sm:pb-16">
+        <div className="container-page">
+          <div className="mb-5 grid gap-5 border border-[color:var(--line)] bg-[color:var(--surface)] p-7 sm:p-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+            <div>
+              <p className="eyebrow">Focused services</p>
+              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
+                SEO-ready pages for the services businesses actually search for.
+              </h2>
+            </div>
+            <p className="max-w-2xl leading-7 text-[color:var(--muted)] lg:justify-self-end">
+              These dedicated service pages explain the work, benefits, process and next steps in a way that helps both customers and search engines understand the offer.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {seoServices.map((service) => (
+              <a
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group flex min-h-48 flex-col justify-between border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow)]"
+              >
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--accent)]">Service</p>
+                  <h3 className="mt-4 text-xl font-semibold tracking-tight">{service.shortTitle}</h3>
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-[color:var(--muted)]">{service.description}</p>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
+                  Learn more <ArrowUpRight size={15} />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

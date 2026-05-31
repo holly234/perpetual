@@ -58,7 +58,7 @@ export default function HomePage() {
             Web design, SEO and business websites for growing companies.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--muted)] sm:text-xl">
-            Perpetual Dev designs premium websites, booking websites and SEO-ready digital experiences for small businesses, startups, schools, rental brands, restaurants and service companies worldwide.
+            Perpetual Dev designs premium websites, booking websites and SEO-ready digital experiences for small businesses, startups and local service companies such as electricians, plumbers, HVAC teams, roofers and contractors worldwide.
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Button href="/projects">View Our Work</Button>

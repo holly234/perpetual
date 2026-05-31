@@ -1,12 +1,10 @@
 import { Navbar } from "@/components/navbar";
-import { KidsTrainingPopup } from "@/components/kids-training-popup";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
       {children}
-      <KidsTrainingPopup />
       <footer className="border-t border-[color:var(--line)] py-8">
         <div className="container-page flex flex-col justify-between gap-5 text-sm text-[color:var(--muted)] lg:flex-row lg:items-center">
           <p>&copy; 2026 Perpetual Dev. Premium modern web development.</p>
@@ -15,7 +13,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <a href="/services" className="transition hover:text-[color:var(--text)]">Services</a>
             <a href="/industries" className="transition hover:text-[color:var(--text)]">Industries</a>
             <a href="/blog" className="transition hover:text-[color:var(--text)]">Blog</a>
-            <a href="/training" className="transition hover:text-[color:var(--text)]">Training</a>
             <a href="/contact" className="transition hover:text-[color:var(--text)]">Contact</a>
             <a href="https://www.instagram.com/perpetual_devs" target="_blank" rel="noreferrer" className="transition hover:text-[color:var(--text)]">
               Instagram

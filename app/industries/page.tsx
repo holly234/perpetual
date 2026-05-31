@@ -7,9 +7,9 @@ import { createMetadata } from "@/lib/site";
 import { StructuredData } from "@/components/structured-data";
 
 export const metadata: Metadata = createMetadata({
-  title: "Industries We Serve",
+  title: "Web Design and Local SEO for Service Businesses",
   description:
-    "Perpetual Dev builds business websites, booking websites and SEO-ready pages for small businesses, startups, schools, logistics companies, restaurants, healthcare, ecommerce and more.",
+    "Perpetual Dev builds websites and local SEO foundations for electricians, plumbers, HVAC companies, roofers, landscapers, dog groomers, contractors and other service businesses.",
   path: "/industries"
 });
 
@@ -54,6 +54,9 @@ export default function IndustriesPage() {
                   </div>
                 ))}
               </div>
+              <Link href={`/industries/${slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
+                View industry page <ArrowUpRight size={15} />
+              </Link>
             </article>
           ))}
         </div>
@@ -93,4 +96,3 @@ export default function IndustriesPage() {
     </main>
   );
 }
-

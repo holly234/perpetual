@@ -13,7 +13,6 @@ const nav = [
   { href: "/industries", label: "Industries" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
-  { href: "/training", label: "Training" },
   { href: "/contact", label: "Contact" }
 ];
 

@@ -88,7 +88,27 @@ export const industries = [
   ["restaurants", "Restaurants", "Restaurant websites for menus, reservations, location details and mobile guest journeys."],
   ["healthcare-businesses", "Healthcare Businesses", "Healthcare websites with trustworthy service pages, appointment calls to action and accessible mobile layouts."],
   ["consultants", "Consultants", "Consultant websites built around authority, service clarity, case studies and qualified inquiries."],
-  ["beauty-brands", "Beauty Brands", "Beauty and salon websites for service menus, booking prompts, galleries and polished mobile presentation."]
+  ["beauty-brands", "Beauty Brands", "Beauty and salon websites for service menus, booking prompts, galleries and polished mobile presentation."],
+  ["electricians", "Electricians", "Local electrician websites with clear service areas, emergency contact options, trust signals and quote-focused calls to action."],
+  ["plumbers", "Plumbers", "Plumbing websites designed for local search visibility, urgent service requests, clear service pages and mobile inquiries."],
+  ["dog-groomers", "Dog Groomers", "Dog grooming websites with service menus, booking prompts, location details, galleries and customer-friendly mobile layouts."],
+  ["arborists", "Arborists", "Arborist and tree care websites for service areas, tree removal inquiries, emergency work and local credibility."],
+  ["dog-trainers", "Dog Trainers", "Dog training websites for programs, consultations, booking inquiries, testimonials and local service visibility."],
+  ["hvac-companies", "HVAC Companies", "HVAC websites for heating and cooling services, emergency calls, financing information, service areas and local lead generation."],
+  ["roofers", "Roofers", "Roofing websites with inspection requests, storm damage pages, service-area content, project galleries and quote-focused calls to action."],
+  ["landscapers", "Landscapers", "Landscaping and lawn care websites for service packages, before-and-after galleries, local search visibility and estimate requests."],
+  ["pest-control-companies", "Pest Control Companies", "Pest control websites with urgent calls to action, treatment pages, service areas and clear contact options."],
+  ["cleaning-services", "Cleaning Services", "Cleaning company websites for residential and commercial services, recurring plans, quote requests and local SEO."],
+  ["contractors", "Contractors", "Contractor websites for services, project portfolios, trust signals, service areas and qualified estimate requests."],
+  ["painters", "Painters", "Painting contractor websites with interior and exterior service pages, galleries, reviews and quote-focused mobile layouts."],
+  ["locksmiths", "Locksmiths", "Locksmith websites for emergency calls, residential and commercial services, service areas and mobile-first contact flows."],
+  ["appliance-repair-companies", "Appliance Repair Companies", "Appliance repair websites with repair categories, service areas, appointment requests and local search structure."],
+  ["garage-door-companies", "Garage Door Companies", "Garage door service websites for repairs, installations, emergency requests and local lead generation."],
+  ["moving-companies", "Moving Companies", "Moving company websites with quote forms, service-area pages, moving services and trust-building content."],
+  ["carpet-cleaning-companies", "Carpet Cleaning Companies", "Carpet cleaning websites for residential and commercial services, quote requests and local visibility."],
+  ["window-cleaning-companies", "Window Cleaning Companies", "Window cleaning websites with service packages, estimate requests, service areas and mobile-friendly calls to action."],
+  ["water-damage-restoration", "Water Damage Restoration", "Restoration websites for urgent inquiries, water damage services, service areas and credibility during time-sensitive searches."],
+  ["pool-service-companies", "Pool Service Companies", "Pool cleaning and maintenance websites for recurring services, repairs, local inquiries and service-area SEO."]
 ] as const;
 
 export const blogPosts = [
@@ -267,4 +287,3 @@ export function blogPostingSchema(post: (typeof blogPosts)[number]) {
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`)
   };
 }
-

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
-import { ProjectImage } from "@/components/project-image";
-import { Button } from "@/components/ui/button";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { projects } from "@/lib/data";
 import { createMetadata } from "@/lib/site";
 
@@ -18,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
 
   return createMetadata({
-    title: `${project.title} ${project.category} Case Study`,
+    title: project.title,
     description: project.summary,
     path: `/projects/${project.slug}`,
     image: project.image
@@ -31,155 +29,45 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
 
   if (!project) notFound();
 
-  const related = projects.filter((item) => item.slug !== project.slug).slice(0, 2);
-  const gallery = project.gallery ?? [project.image];
-
   return (
-    <main className="pt-28">
-      <section className="container-page">
-        <div className="border-b border-[color:var(--line)] pb-8 pt-8">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--muted)] transition hover:text-[color:var(--text)]">
-            <ArrowLeft size={16} /> Back to projects
-          </Link>
-        </div>
+    <main className="projects-screen">
+      <section className="container-page py-8 sm:py-10">
+        <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white">
+          <ArrowLeft size={16} /> Back to projects
+        </Link>
 
-        <div className="grid gap-10 py-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="eyebrow">{project.category}</p>
-              <span className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
-                {project.previewType ?? (project.liveUrl ? "Live project" : "Case study")}
-              </span>
-            </div>
-            <h1 className="mt-5 max-w-4xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] sm:text-7xl">
-              {project.title}
-            </h1>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">{project.category}</p>
+            <h1 className="mt-4 text-5xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">{project.title}</h1>
           </div>
-
-          <div className="max-w-xl lg:justify-self-end">
-            <p className="text-lg leading-8 text-[color:var(--muted)]">{project.summary}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              {project.liveUrl ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-primary"
-                >
-                  {project.previewType === "Template demo" ? "View Demo" : "Live Preview"} <ExternalLink size={15} className="ml-2" />
-                </a>
-              ) : (
-                <Button href="/contact">Request Similar Build</Button>
-              )}
-              <Button href="/contact" variant="secondary">
-                Start a Project
-              </Button>
+          <div className="max-w-2xl lg:justify-self-end">
+            <p className="text-lg leading-8 text-slate-300">{project.summary}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {project.stack.map((item) => (
+                <span key={item} className="border border-white/15 bg-white/5 px-3 py-1 text-sm text-slate-200">
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-sm border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-3">
-          <div className="relative aspect-[1.6/1] overflow-hidden rounded-sm">
-            <ProjectImage src={project.image} fallback={project.gallery?.[1]} alt={project.title} className="absolute inset-0 h-full w-full object-cover object-top" />
+        <div className="mt-8 overflow-hidden border-4 border-white bg-white shadow-[12px_12px_0_#2563eb]">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-100 px-4 py-3">
+            <p className="text-sm font-black text-slate-900">Live website preview</p>
+            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-black text-slate-700 transition hover:text-slate-950">
+              Open site <ExternalLink size={14} />
+            </a>
           </div>
-        </div>
-      </section>
-
-      <section className="py-14 sm:py-20">
-        <div className="container-page grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
-          <aside className="grid content-start gap-5">
-            <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
-              <p className="text-sm font-semibold text-[color:var(--accent)]">Stack</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <span key={item} className="rounded-sm border border-[color:var(--line)] px-3 py-1 text-sm text-[color:var(--muted)]">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
-              <p className="text-sm font-semibold text-[color:var(--accent)]">Project focus</p>
-              <div className="mt-5 grid gap-3">
-                {project.metrics.map((metric) => (
-                  <div key={metric} className="rounded-sm bg-[color:var(--surface-muted)] p-4">
-                    <p className="text-sm font-semibold">{metric}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </aside>
-
-          <div className="grid gap-5">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-7">
-                <p className="eyebrow">Challenge</p>
-                <p className="mt-6 text-xl leading-9 text-[color:var(--muted)]">{project.challenge}</p>
-              </div>
-              <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-7">
-                <p className="eyebrow">Solution</p>
-                <p className="mt-6 text-xl leading-9 text-[color:var(--muted)]">{project.solution}</p>
-              </div>
-            </div>
-
-            <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface-muted)] p-3">
-              <div className="mb-3 flex items-center justify-between px-2 py-1">
-                <p className="text-sm font-semibold text-[color:var(--accent)]">Project gallery</p>
-                <p className="text-xs text-[color:var(--muted)]">{gallery.length} previews</p>
-              </div>
-              <div className="grid gap-3 md:grid-cols-[1.2fr_.8fr]">
-                <div className="relative min-h-[360px] overflow-hidden rounded-sm bg-[color:var(--surface)]">
-                  <ProjectImage src={gallery[0]} fallback={gallery[1]} alt={`${project.title} main screen preview`} className="absolute inset-0 h-full w-full object-cover object-top" />
-                </div>
-                <div className="grid gap-3">
-                  {gallery.slice(1, 3).map((image, index) => (
-                    <div key={image} className="relative min-h-[174px] overflow-hidden rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)]">
-                      <ProjectImage src={image} fallback={project.image} alt={`${project.title} gallery preview ${index + 2}`} className="absolute inset-0 h-full w-full object-cover object-top" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {gallery.length > 3 && (
-                <div className="mt-3 grid gap-3 sm:grid-cols-3">
-                  {gallery.slice(3).map((image, index) => (
-                    <div key={image} className="relative min-h-[190px] overflow-hidden rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)]">
-                      <ProjectImage src={image} fallback={project.image} alt={`${project.title} extra gallery preview ${index + 1}`} className="absolute inset-0 h-full w-full object-cover object-top" />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container-page pb-24">
-        <div className="project-cta-panel relative overflow-hidden rounded-sm border border-[color:var(--line)] p-8 text-[color:var(--text)] sm:p-10 lg:p-14">
-          <div className="project-cta-pattern absolute inset-0 opacity-60 dark:opacity-30" />
-          <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="project-cta-muted text-sm font-semibold uppercase tracking-[0.18em]">Build something similar</p>
-              <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Need a project with this level of polish?
-              </h2>
-            </div>
-            <Link href="/contact" className="project-cta-button">
-              Start a Project <ArrowUpRight size={16} className="ml-2" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {related.map((item) => (
-            <Link key={item.slug} href={`/projects/${item.slug}`} className="group rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-5 transition hover:-translate-y-1 hover:shadow-[var(--shadow)]">
-              <p className="text-sm font-semibold text-[color:var(--accent)]">{item.category}</p>
-              <div className="mt-3 flex items-center justify-between gap-4">
-                <h3 className="text-2xl font-semibold tracking-tight">{item.title}</h3>
-                <ArrowUpRight size={18} className="text-[color:var(--muted)] group-hover:text-[color:var(--text)]" />
-              </div>
-            </Link>
-          ))}
+          <iframe
+            src={project.embedUrl}
+            title={`${project.title} live website preview`}
+            className="h-[72vh] min-h-[560px] w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+          />
         </div>
       </section>
     </main>

@@ -22,29 +22,29 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-5 shadow-[var(--shadow)] sm:p-7">
+    <form onSubmit={handleSubmit} className="contact-form p-5 sm:p-7">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">
           Name
-          <input name="name" required placeholder="Your name" className="h-12 rounded-sm border border-[color:var(--line)] bg-[color:var(--background)]/40 px-4 outline-none transition placeholder:text-[color:var(--muted)]/70 focus:border-[color:var(--accent)]" />
+          <input name="name" required placeholder="Your name" className="contact-input" />
         </label>
         <label className="grid gap-2 text-sm font-semibold">
           Email
-          <input name="email" required type="email" placeholder="you@email.com" className="h-12 rounded-sm border border-[color:var(--line)] bg-[color:var(--background)]/40 px-4 outline-none transition placeholder:text-[color:var(--muted)]/70 focus:border-[color:var(--accent)]" />
+          <input name="email" required type="email" placeholder="you@email.com" className="contact-input" />
         </label>
       </div>
       <label className="mt-5 grid gap-2 text-sm font-semibold">
         Project type
-        <input name="project" required placeholder="Website, app, dashboard..." className="h-12 rounded-sm border border-[color:var(--line)] bg-[color:var(--background)]/40 px-4 outline-none transition placeholder:text-[color:var(--muted)]/70 focus:border-[color:var(--accent)]" />
+        <input name="project" required placeholder="Website, app, dashboard..." className="contact-input" />
       </label>
       <label className="mt-5 grid gap-2 text-sm font-semibold">
         Message
-        <textarea name="message" required placeholder="Tell us what you want to build" className="min-h-40 resize-none rounded-sm border border-[color:var(--line)] bg-[color:var(--background)]/40 px-4 py-4 outline-none transition placeholder:text-[color:var(--muted)]/70 focus:border-[color:var(--accent)]" />
+        <textarea name="message" required placeholder="Tell us what you want to build" className="contact-input min-h-36 resize-none py-4" />
       </label>
       <Button type="submit" className="mt-6 w-full">
         Start a Project
       </Button>
-      {status && <p className="mt-4 rounded-sm bg-[color:var(--accent-soft)] px-4 py-3 text-sm font-semibold text-[color:var(--accent)]">{status}</p>}
+      {status && <p className="mt-4 bg-blue-950 px-4 py-3 text-sm font-semibold text-blue-200">{status}</p>}
     </form>
   );
 }

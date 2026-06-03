@@ -3,89 +3,83 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/industries", label: "Industries" },
   { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" }
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const closeTimer = useRef<number | null>(null);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  function clearCloseTimer() {
+    if (closeTimer.current) {
+      window.clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+
+  function openNav() {
+    clearCloseTimer();
+    setVisible(true);
+    setClosing(false);
+    setOpen(true);
+  }
+
+  function closeNav() {
+    clearCloseTimer();
+    setOpen(false);
+    setClosing(true);
+    closeTimer.current = window.setTimeout(() => {
+      setVisible(false);
+      setClosing(false);
+      closeTimer.current = null;
+    }, 220);
+  }
+
+  function toggleNav() {
+    if (open || visible) {
+      closeNav();
+    } else {
+      openNav();
+    }
+  }
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-transparent transition duration-300",
-        scrolled && "border-[color:var(--line)] bg-[color:var(--background)]/78 backdrop-blur-xl"
-      )}
-    >
-      <nav className="container-page flex h-20 items-center justify-between gap-3 max-sm:h-[72px]">
-        <Link href="/" aria-label="Perpetual Dev home" className="logo-crop shrink-0" />
+    <div className="fixed right-4 top-4 z-50 sm:right-6 sm:top-6">
+      <button
+        type="button"
+        onClick={toggleNav}
+        className="nav-float-button"
+        aria-label="Toggle navigation"
+      >
+        {open ? <X size={20} /> : <Menu size={20} />}
+      </button>
 
-        <div className="hidden items-center gap-1 rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)]/72 p-1 lg:flex">
+      {visible && (
+        <div className={cn("nav-float-panel", closing && "nav-float-panel-closing")}>
           {nav.map((item) => {
             const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={cn(
-                  "rounded-sm px-4 py-2 text-sm font-medium text-[color:var(--muted)] transition",
-                  active && "bg-[color:var(--surface-muted)] text-[color:var(--text)]",
-                  !active && "hover:text-[color:var(--text)]"
-                )}
+                onClick={closeNav}
+                className={cn("nav-float-link", active && "nav-float-link-active")}
               >
                 {item.label}
               </Link>
             );
           })}
         </div>
-
-        <div className="flex min-w-0 items-center gap-2 max-sm:gap-1.5">
-          <ThemeToggle />
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-[color:var(--line)] lg:hidden"
-            aria-label="Toggle navigation"
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
-      </nav>
-
-      {open && (
-        <div className="container-page pb-4 lg:hidden">
-          <div className="rounded-sm border border-[color:var(--line)] bg-[color:var(--surface)] p-2 shadow-[var(--shadow)]">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-sm px-4 py-3 text-sm font-semibold text-[color:var(--text)]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
       )}
-    </header>
+    </div>
   );
 }

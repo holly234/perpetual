@@ -3,18 +3,25 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
+type Theme = "dark" | "light";
+
+const resetKey = "perpetual-theme-default-light";
+
+function getStoredTheme(): Theme {
+  if (typeof window === "undefined") return "light";
+
+  const saved = localStorage.getItem("theme") as Theme | null;
+  return localStorage.getItem(resetKey) ? saved ?? "light" : "light";
+}
+
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const [theme, setTheme] = useState<Theme>(getStoredTheme);
 
   useEffect(() => {
-    const resetKey = "perpetual-theme-default-light";
-    const saved = localStorage.getItem("theme") as "dark" | "light" | null;
-    const next = localStorage.getItem(resetKey) ? saved ?? "light" : "light";
     localStorage.setItem(resetKey, "true");
-    localStorage.setItem("theme", next);
-    setTheme(next);
-    document.documentElement.classList.toggle("dark", next === "dark");
-  }, []);
+    localStorage.setItem("theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
 
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";

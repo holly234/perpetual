@@ -17,20 +17,31 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
             : "grid h-full grid-rows-[auto_1fr]"
         }
       >
-        <div className={large ? "relative min-h-[320px] overflow-hidden bg-[color:var(--surface-muted)] lg:min-h-full" : "relative aspect-[1.45/1] overflow-hidden bg-[color:var(--surface-muted)]"}>
-          <ProjectImage
-            src={project.image}
-            fallback={project.gallery?.[1]}
-            alt={project.title}
-            className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.035]"
-          />
+        <div className={large ? "relative min-h-[320px] overflow-hidden bg-white lg:min-h-full" : "relative aspect-[1.45/1] overflow-hidden bg-white"}>
+          {project.embedUrl ? (
+            <iframe
+              src={project.embedUrl}
+              title={`${project.title} website front page preview`}
+              className="pointer-events-none h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+            />
+          ) : (
+            <ProjectImage
+              src={project.image}
+              fallback={project.gallery?.[1]}
+              alt={project.title}
+              className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.035]"
+            />
+          )}
         </div>
         <div className={large ? "flex min-h-full flex-col justify-between p-6 sm:p-8" : "flex min-h-full flex-col justify-between p-5"}>
           <div>
             <div className="flex items-center justify-between gap-3">
               <p className="text-sm font-semibold text-[color:var(--accent)]">{project.category}</p>
               <span className="rounded-sm border border-[color:var(--line)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
-                {project.previewType ?? (project.liveUrl ? "Live" : "Case study")}
+                {project.previewType ?? "Live preview"}
               </span>
             </div>
             <div className="mt-3 flex items-start justify-between gap-4">
@@ -48,7 +59,7 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
           </div>
           {project.liveUrl && (
             <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
-              Live preview <ExternalLink size={14} />
+              Open live project <ExternalLink size={14} />
             </div>
           )}
         </div>

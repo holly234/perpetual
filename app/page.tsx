@@ -94,7 +94,7 @@ export default function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {projects.map((project) => (
-              <div key={project.slug} data-reveal>
+              <div key={project.slug} className="h-full" data-reveal>
                 <ProjectCard project={project} />
               </div>
             ))}

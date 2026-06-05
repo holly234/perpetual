@@ -72,6 +72,42 @@ export const projects = [
     liveUrl: "https://demo-car-rental-ten.vercel.app/",
     embedUrl: "https://demo-car-rental-ten.vercel.app/",
     previewType: "Live demo"
+  },
+  {
+    slug: "futeball-for-all-demo",
+    title: "Futeball For All Demo",
+    category: "Football Jersey Ecommerce",
+    summary: "A premium football jersey ecommerce demo with product browsing, cart flow and WhatsApp or Instagram checkout paths.",
+    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80"
+    ],
+    stack: ["Ecommerce UX", "Responsive UI", "WhatsApp Checkout"],
+    metrics: ["Product filters", "Cart flow", "Social checkout"],
+    challenge: "Show a jersey catalog clearly while keeping checkout simple for customers who want to order through social channels.",
+    solution: "A responsive ecommerce demo with product cards, filtering, cart management and direct WhatsApp or Instagram order prompts.",
+    liveUrl: "https://fj-demo-zeta.vercel.app/",
+    embedUrl: "https://fj-demo-zeta.vercel.app/",
+    previewType: "Live demo"
+  },
+  {
+    slug: "canopy-root-arborist-demo",
+    title: "Canopy & Root Arborist Demo",
+    category: "Arborist Website",
+    summary: "A modern one-page arborist and tree doctor website demo with heavy tree work, machinery, services and project gallery sections.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Worker_trimming_a_tree_next_to_a_house.jpg",
+    gallery: [
+      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Worker_trimming_a_tree_next_to_a_house.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Rotor_stump_grinder_at_work.jpg"
+    ],
+    stack: ["One-page Website", "Responsive UI", "Service Gallery"],
+    metrics: ["Emergency CTA", "Machinery sections", "Tree care services"],
+    challenge: "Present dangerous tree work, preservation services and field capability in a way that feels direct and trustworthy.",
+    solution: "A visual arborist website demo with service cards, equipment proof, project gallery content and clear inspection callouts.",
+    liveUrl: "https://arborist-demo.vercel.app/",
+    embedUrl: "https://arborist-demo.vercel.app/",
+    previewType: "Live demo"
   }
 ];
 

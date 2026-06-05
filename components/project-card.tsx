@@ -8,12 +8,12 @@ type Project = (typeof projects)[number];
 
 export function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
   return (
-    <Card className="group overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow)]">
+    <Card className="group h-full overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow)]">
       <Link
         href={`/projects/${project.slug}`}
         className={
           large
-            ? "grid min-h-[360px] lg:grid-cols-[1.18fr_.82fr]"
+            ? "grid h-full min-h-[360px] lg:grid-cols-[1.18fr_.82fr]"
             : "grid h-full grid-rows-[auto_1fr]"
         }
       >
@@ -36,11 +36,11 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
             />
           )}
         </div>
-        <div className={large ? "flex min-h-full flex-col justify-between p-6 sm:p-8" : "flex min-h-full flex-col justify-between p-5"}>
+        <div className={large ? "flex min-h-full flex-col p-6 sm:p-8" : "flex min-h-full flex-col p-5"}>
           <div>
             <div className="flex items-center justify-between gap-3">
-              <p className="text-sm font-semibold text-[color:var(--accent)]">{project.category}</p>
-              <span className="rounded-sm border border-[color:var(--line)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
+              <p className="line-clamp-1 min-w-0 text-sm font-semibold text-[color:var(--accent)]">{project.category}</p>
+              <span className="shrink-0 rounded-sm border border-[color:var(--line)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
                 {project.previewType ?? "Live preview"}
               </span>
             </div>
@@ -58,7 +58,7 @@ export function ProjectCard({ project, large = false }: { project: Project; larg
             ))}
           </div>
           {project.liveUrl && (
-            <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
+            <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[color:var(--accent)]">
               Open live project <ExternalLink size={14} />
             </div>
           )}

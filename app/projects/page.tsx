@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       <section className="py-8 sm:py-10">
         <div className="container-page grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
-            <MotionDiv key={project.slug} initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.6, delay: index * 0.04 }}>
+            <MotionDiv key={project.slug} className="h-full" initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.6, delay: index * 0.04 }}>
               <ProjectCard project={project} />
             </MotionDiv>
           ))}

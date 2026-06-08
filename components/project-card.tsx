@@ -1,69 +1,75 @@
-import Link from "next/link";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
-import { Card } from "@/components/ui/card";
-import { ProjectImage } from "@/components/project-image";
 
 type Project = (typeof projects)[number];
 
 export function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+  const displayTitle = project.title.replace(/\s+demo$/i, "");
+  const displaySummary = project.summary
+    .replace(/\s+demo\b/gi, "")
+    .replace(/\bdemo\s+/gi, "");
+  const screenshots = Array.from(
+    { length: 5 },
+    (_, index) => `/project-screenshots/${project.slug}/${index + 1}.jpg`
+  );
+
   return (
-    <Card className="group h-full overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow)]">
-      <Link
-        href={`/projects/${project.slug}`}
+    <article className="project-card group h-full">
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visit ${displayTitle} website`}
         className={
           large
-            ? "grid h-full min-h-[360px] lg:grid-cols-[1.18fr_.82fr]"
-            : "grid h-full grid-rows-[auto_1fr]"
+            ? "grid h-full min-h-[390px] lg:grid-cols-[1.2fr_.8fr]"
+            : "flex h-full flex-col"
         }
       >
-        <div className={large ? "relative min-h-[320px] overflow-hidden bg-white lg:min-h-full" : "relative aspect-[1.45/1] overflow-hidden bg-white"}>
-          {project.embedUrl ? (
-            <iframe
-              src={project.embedUrl}
-              title={`${project.title} website front page preview`}
-              className="pointer-events-none h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
-            />
-          ) : (
-            <ProjectImage
-              src={project.image}
-              fallback={project.gallery?.[1]}
-              alt={project.title}
-              className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.035]"
-            />
-          )}
+        <div className={large ? "project-card-media project-card-gallery min-h-[330px] lg:min-h-full" : "project-card-media project-card-gallery aspect-[4/3]"}>
+          {screenshots.map((screenshot, index) => (
+            <div
+              key={screenshot}
+              className={index === 0 ? "project-card-shot project-card-shot-main" : "project-card-shot"}
+            >
+              <Image
+                src={screenshot}
+                alt={`${displayTitle} page screenshot ${index + 1}`}
+                fill
+                sizes={
+                  index === 0
+                    ? "(min-width: 1280px) 22vw, (min-width: 768px) 34vw, 70vw"
+                    : "(min-width: 1280px) 8vw, (min-width: 768px) 13vw, 28vw"
+                }
+                className="object-cover object-top"
+              />
+            </div>
+          ))}
+          <div className="project-card-shade" />
+          <span className="project-card-index" aria-hidden="true">
+            {String(projects.findIndex((item) => item.slug === project.slug) + 1).padStart(2, "0")}
+          </span>
         </div>
-        <div className={large ? "flex min-h-full flex-col p-6 sm:p-8" : "flex min-h-full flex-col p-5"}>
-          <div>
-            <div className="flex items-center justify-between gap-3">
-              <p className="line-clamp-1 min-w-0 text-sm font-semibold text-[color:var(--accent)]">{project.category}</p>
-              <span className="shrink-0 rounded-sm border border-[color:var(--line)] px-3 py-1 text-xs font-semibold text-[color:var(--muted)]">
-                {project.previewType ?? "Live preview"}
-              </span>
-            </div>
-            <div className="mt-3 flex items-start justify-between gap-4">
-              <h3 className={large ? "text-2xl font-semibold leading-tight tracking-tight sm:text-3xl" : "text-xl font-semibold leading-tight tracking-tight"}>{project.title}</h3>
-              <ArrowUpRight className="mt-1 shrink-0 text-[color:var(--muted)] transition group-hover:text-[color:var(--text)]" size={20} />
-            </div>
-            <p className={large ? "mt-4 line-clamp-3 leading-7 text-[color:var(--muted)]" : "mt-3 line-clamp-2 text-sm leading-6 text-[color:var(--muted)]"}>{project.summary}</p>
+        <div className={large ? "flex min-h-full flex-col p-7 sm:p-9" : "flex flex-1 flex-col p-6 sm:p-7"}>
+          <p className="project-card-category">{project.category}</p>
+          <div className="mt-4 flex items-start justify-between gap-5">
+            <h3 className={large ? "text-3xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-4xl" : "text-[1.65rem] font-semibold leading-[1.05] tracking-[-0.04em]"}>
+              {displayTitle}
+            </h3>
+            <span className="project-card-arrow">
+              <ArrowUpRight size={19} strokeWidth={1.8} />
+            </span>
           </div>
-          <div className={large ? "mt-7 flex flex-wrap gap-2" : "mt-5 flex flex-wrap gap-2"}>
-            {project.stack.map((item) => (
-              <span key={item} className="rounded-sm border border-[color:var(--line)] px-3 py-1 text-xs font-medium text-[color:var(--muted)]">
-                {item}
-              </span>
-            ))}
+          <p className={large ? "mt-5 line-clamp-3 max-w-md leading-7 text-[color:var(--muted)]" : "mt-4 line-clamp-2 text-sm leading-6 text-[color:var(--muted)]"}>
+            {displaySummary}
+          </p>
+          <div className="project-card-link mt-auto pt-7">
+            <span>Visit website</span>
+            <span className="project-card-link-line" />
           </div>
-          {project.liveUrl && (
-            <div className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[color:var(--accent)]">
-              Open live project <ExternalLink size={14} />
-            </div>
-          )}
         </div>
-      </Link>
-    </Card>
+      </a>
+    </article>
   );
 }

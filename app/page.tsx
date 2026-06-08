@@ -17,9 +17,9 @@ export const metadata: Metadata = createMetadata({
 });
 
 const studioImages = [
-  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2200&q=95",
+  "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=900&h=1600&q=95",
+  "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1800&q=95"
 ];
 
 const marqueeItems = ["Portfolio sites", "Booking pages", "Local business websites", "Mobile layouts", "Live demos", "Clean builds"];
@@ -49,22 +49,24 @@ export default function HomePage() {
           </div>
 
           <div className="retro-collage grid min-h-[560px] grid-cols-6 grid-rows-6 gap-4">
-            <div data-hero-image data-parallax className="retro-image-card relative col-span-4 row-span-4 overflow-hidden">
-              <Image src={studioImages[0]} alt="Modern studio workspace" fill priority sizes="(min-width: 1024px) 44vw, 100vw" className="object-cover" />
+            <div data-hero-image data-parallax className="retro-image-card relative col-span-3 row-span-4 overflow-hidden lg:col-span-4">
+              <Image src={studioImages[0]} alt="Website analytics displayed on a laptop" fill priority quality={95} sizes="(min-width: 1024px) 44vw, 72vw" className="object-cover object-center" />
             </div>
-            <div data-hero-image data-float-slow className="retro-image-card retro-tilt-right relative col-span-2 row-span-3 overflow-hidden">
-              <Image src={studioImages[1]} alt="Website project planning" fill priority sizes="(min-width: 1024px) 22vw, 50vw" className="object-cover" />
+            <div data-hero-image data-float-slow className="retro-image-card retro-tilt-right relative col-span-3 row-span-3 overflow-hidden lg:col-span-2">
+              <Image src={studioImages[1]} alt="Professional car detailing and customization" fill priority quality={95} sizes="(min-width: 1024px) 22vw, 34vw" className="object-cover object-[58%_center]" />
             </div>
-            <div data-hero-image data-float-slow className="retro-stat col-span-2 row-span-1 grid place-items-center p-5 text-center">
+            <div data-hero-image data-float-slow className="retro-stat col-span-3 row-span-1 grid place-items-center p-5 text-center lg:col-span-2">
               <Sparkles size={22} />
               <p className="mt-2 text-sm font-semibold">Live website work</p>
             </div>
             <div data-hero-image className="retro-image-card retro-tilt-left relative col-span-3 row-span-2 overflow-hidden">
-              <Image src={studioImages[2]} alt="Responsive website on laptop" fill sizes="(min-width: 1024px) 28vw, 100vw" className="object-cover" />
+              <Image src={studioImages[2]} alt="Designer working on a polished website interface" fill quality={95} sizes="(min-width: 1024px) 28vw, 50vw" className="object-cover object-center" />
             </div>
-            <div data-hero-image data-float-slow className="retro-number-card col-span-3 row-span-2 p-5">
-              <p className="text-5xl font-black tracking-[-0.05em]">04</p>
-              <p className="mt-8 text-sm font-black uppercase tracking-[0.18em]">Live project previews</p>
+            <div data-hero-image data-float-slow className="retro-number-card col-span-3 row-span-2 flex flex-col justify-between p-5">
+              <p className="text-sm font-black uppercase tracking-[0.18em] opacity-80">Built with purpose</p>
+              <p className="max-w-[12ch] text-2xl font-black leading-[1.05] tracking-[-0.04em] sm:text-3xl">
+                Sharp. Fast. Easy to use.
+              </p>
             </div>
           </div>
           </div>
@@ -80,14 +82,14 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="portfolio-band py-10 sm:py-12">
+        <section className="portfolio-work-band py-10 sm:py-12">
           <div className="container-page">
-          <div data-reveal className="mb-6 flex flex-col justify-between gap-4 border-b border-[color:var(--line)] pb-5 sm:flex-row sm:items-end">
+          <div data-reveal className="mb-6 flex flex-col justify-between gap-4 border-b border-white/15 pb-5 sm:flex-row sm:items-end">
             <div>
               <p className="eyebrow">Work</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">Live website previews.</h2>
+              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">Live website previews.</h2>
             </div>
-            <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--accent)]">
+            <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-white">
               All projects <ArrowRight size={16} />
             </Link>
           </div>

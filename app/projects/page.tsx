@@ -30,7 +30,7 @@ export default function ProjectsPage() {
           </div>
           <div className="max-w-xl lg:justify-self-end">
             <p className="text-lg leading-8 text-slate-300">
-              A small set of live website builds and demos. Open any project to view the full website inside this portfolio.
+              A curated selection of websites designed for clear positioning, strong presentation and effortless browsing.
             </p>
           </div>
         </MotionDiv>

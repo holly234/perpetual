@@ -8,11 +8,20 @@ const projects = [
   ["dog-groomer-demo", "https://demo-dog-groomer.vercel.app/"],
   ["car-rental-demo", "https://demo-car-rental-ten.vercel.app/"],
   ["futeball-for-all-demo", "https://fj-demo-zeta.vercel.app/"],
-  ["canopy-root-arborist-demo", "https://arborist-demo.vercel.app/"]
+  ["canopy-root-arborist-demo", "https://arborist-demo.vercel.app/"],
+  ["p-chow-restaurant", "https://r-demo.vercel.app/"]
 ];
 
 const outputRoot = path.join(process.cwd(), "public", "project-screenshots");
 const executablePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+const requestedSlug = process.argv[2];
+const selectedProjects = requestedSlug
+  ? projects.filter(([slug]) => slug === requestedSlug)
+  : projects;
+
+if (requestedSlug && selectedProjects.length === 0) {
+  throw new Error(`Unknown project slug: ${requestedSlug}`);
+}
 
 await mkdir(outputRoot, { recursive: true });
 
@@ -22,7 +31,7 @@ const browser = await chromium.launch({
   args: ["--disable-dev-shm-usage"]
 });
 
-for (const [slug, url] of projects) {
+for (const [slug, url] of selectedProjects) {
   const projectDirectory = path.join(outputRoot, slug);
   await mkdir(projectDirectory, { recursive: true });
 
@@ -37,6 +46,8 @@ for (const [slug, url] of projects) {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
   }
 
+  await page.waitForTimeout(slug === "p-chow-restaurant" ? 5500 : 1800);
+
   await page.addStyleTag({
     content: `
       html { scroll-behavior: auto !important; }
@@ -44,7 +55,7 @@ for (const [slug, url] of projects) {
     `
   });
 
-  await page.waitForTimeout(1800);
+  await page.waitForTimeout(400);
 
   const pageHeight = await page.evaluate(() =>
     Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)

@@ -108,6 +108,24 @@ export const projects = [
     liveUrl: "https://arborist-demo.vercel.app/",
     embedUrl: "https://arborist-demo.vercel.app/",
     previewType: "Live demo"
+  },
+  {
+    slug: "p-chow-restaurant",
+    title: "P-Chow",
+    category: "Restaurant Website",
+    summary: "A refined restaurant website with atmospheric storytelling, seasonal menus and a focused table reservation experience.",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80"
+    ],
+    stack: ["Restaurant Website", "Responsive UI", "Reservation UX"],
+    metrics: ["Seasonal menu", "Dining atmosphere", "Table reservations"],
+    challenge: "Present the restaurant as a distinctive Austin dining destination while making menus and reservations effortless to find.",
+    solution: "An editorial dining experience with strong typography, immersive food imagery, clear menu presentation and a direct reservation flow.",
+    liveUrl: "https://r-demo.vercel.app/",
+    embedUrl: "https://r-demo.vercel.app/",
+    previewType: "Live project"
   }
 ];
 

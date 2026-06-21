@@ -7,9 +7,10 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "ghost";
   className?: string;
   type?: "button" | "submit";
+  disabled?: boolean;
 };
 
-export function Button({ href, children, variant = "primary", className, type = "button" }: ButtonProps) {
+export function Button({ href, children, variant = "primary", className, type = "button", disabled }: ButtonProps) {
   const classes = cn(
     "btn",
     "focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] focus:ring-offset-2 focus:ring-offset-[color:var(--background)]",
@@ -28,7 +29,7 @@ export function Button({ href, children, variant = "primary", className, type = 
   }
 
   return (
-    <button type={type} className={classes}>
+    <button type={type} className={classes} disabled={disabled}>
       {children}
     </button>
   );

@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+const fallbackWebhookUrl = "https://kessie20.app.n8n.cloud/webhook-test/8d7d031f-52bf-4045-9beb-e0f2c7544e22";
+
 type ContactPayload = {
   name?: unknown;
   email?: unknown;
@@ -31,7 +33,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Please fill out every field." }, { status: 400 });
   }
 
-  const webhookUrl = process.env.N8N_CONTACT_WEBHOOK_URL;
+  const webhookUrl = process.env.N8N_CONTACT_WEBHOOK_URL || fallbackWebhookUrl;
 
   if (!webhookUrl) {
     return NextResponse.json(

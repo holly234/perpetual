@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     "Olamide Titus is an Operations & Support Specialist delivering fast customer care, executive admin support, and web system automation for remote teams worldwide.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://perpetualdevs.com",
-  email: "olamidetitus2@gmail.com",
+  email: "olamidetituswork@gmail.com",
   phone: "07039742741",
   logo: "/assets/logo.png",
   photo: "/assets/profile.jpg",

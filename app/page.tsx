@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Download, Mail, Monitor, Wifi, Clock, ArrowUpRight, MessageSquare, FileText, Workflow } from "lucide-react";
+import { ArrowRight, Download, Mail, Monitor, Wifi, Clock, ArrowUpRight, MessageSquare, FileText, Workflow, Award } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
 import { MessageCircle } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
@@ -99,10 +99,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
-                      Customer support at <span className="font-semibold text-slate-900">Zendesk &amp; Intercom</span>
+                      Client operations &amp; support at <span className="font-semibold text-slate-900">Perpetual Dev.</span>
                     </p>
                     <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
-                      &lt;15 min turnaround · Ticket triage &amp; live chat
+                      2023 – Present · Client onboarding, chat support &amp; ticketing
                     </p>
                   </div>
                 </div>
@@ -114,10 +114,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
-                      Executive admin at <span className="font-semibold text-slate-900">Notion &amp; Google Workspace</span>
+                      Customer research &amp; data at <span className="font-semibold text-slate-900">Brickfield Road Associates</span>
                     </p>
                     <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
-                      Inbox zero, calendar coordination &amp; team SOPs
+                      Field surveys, data accuracy &amp; stakeholder communication
                     </p>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export default function HomePage() {
                       Web systems &amp; automation with <span className="font-semibold text-slate-900">n8n &amp; Custom Code</span>
                     </p>
                     <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
-                      Custom API pipelines, webhooks &amp; scripts
+                      Custom API pipelines, payment gateways &amp; scripts
                     </p>
                   </div>
                 </div>
@@ -150,14 +150,14 @@ export default function HomePage() {
                 <div className="flex items-center justify-between py-6">
                   <div className="flex items-center gap-4 sm:gap-5">
                     <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                      <Monitor size={22} className="text-slate-900" strokeWidth={1.75} />
+                      <Award size={22} className="text-slate-900" strokeWidth={1.75} />
                     </div>
                     <div>
                       <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
-                        Hardware &amp; equipment at <span className="font-semibold text-slate-900">Production Ready</span>
+                        Customer Service Hub at <span className="font-semibold text-slate-900">HubSpot Academy</span>
                       </p>
                       <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
-                        16GB RAM PC, dual displays &amp; noise-cancelling audio
+                        Certified · 60+ WPM typing speed (98% verified accuracy)
                       </p>
                     </div>
                   </div>

@@ -32,7 +32,7 @@ export default function HomePage() {
             fill
             priority
             quality={95}
-            className="object-cover object-[center_15%]"
+            className="object-cover object-[center_15%] lg:object-[center_30%]"
           />
           {/* Subtle bottom fade only behind the text/buttons at the very bottom */}
           <div className="absolute inset-x-0 bottom-0 h-[60%] sm:h-[50%] bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent pointer-events-none" />

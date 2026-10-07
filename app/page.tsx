@@ -22,16 +22,66 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-slate-900">
       <StructuredData data={professionalServiceSchema("/")} />
 
-      {/* ── 1. HERO SECTION (80vh Desktop / 100vh Mobile Image Background) ── */}
-      <section className="relative w-full h-[100dvh] min-h-[100dvh] lg:h-[80vh] lg:min-h-[80vh] overflow-hidden bg-white">
-        <Image
-          src="/assets/profile.jpg"
-          alt="Hero Background"
-          fill
-          priority
-          quality={95}
-          className="object-cover object-[center_20%]"
-        />
+      {/* ── 1. HERO SECTION (80vh Desktop / 100vh Mobile with Content Brought Down) ── */}
+      <section className="relative w-full h-[100dvh] min-h-[100dvh] lg:h-[80vh] lg:min-h-[80vh] flex flex-col justify-end overflow-hidden bg-slate-900 text-white">
+        {/* Background Image: face stays completely bright and unobstructed */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/assets/profile.jpg"
+            alt="Hero Background"
+            fill
+            priority
+            quality={95}
+            className="object-cover object-[center_15%]"
+          />
+          {/* Subtle bottom fade only behind the text/buttons at the very bottom */}
+          <div className="absolute inset-x-0 bottom-0 h-[60%] sm:h-[50%] bg-gradient-to-t from-slate-950/95 via-slate-950/60 to-transparent pointer-events-none" />
+        </div>
+
+        {/* Content brought down towards the bottom */}
+        <div className="relative z-10 w-[90%] mx-[5%] pb-8 sm:pb-12 lg:pb-14">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
+
+            {/* Left Column: Hello! I'm Olamide Titus */}
+            <div>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.1] drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                Hello! I&apos;m Olamide <br className="hidden sm:inline" />
+                Titus
+              </h1>
+            </div>
+
+            {/* Right Column: Title + Subtitle + Buttons */}
+            <div>
+              <h2 className="text-xl sm:text-3xl font-normal tracking-tight text-white leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+                An Operations &amp; Support Specialist based in Nigeria.
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-slate-200 font-normal drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+                Passionate about scaling customer support, inbox zero, and reliable web workflows for global teams.
+              </p>
+
+              <div className="mt-5 flex items-center gap-3">
+                <a
+                  href={siteConfig.social.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl bg-white px-6 py-2.5 text-xs sm:text-sm font-medium !text-slate-950 hover:bg-slate-200 transition shadow-sm"
+                  id="hero-whatsapp-cta"
+                >
+                  Talk with me
+                </a>
+
+                <Link
+                  href="#works"
+                  className="rounded-xl border border-white/40 bg-black/40 backdrop-blur-sm px-6 py-2.5 text-xs sm:text-sm font-medium text-white hover:bg-white/10 transition"
+                  id="hero-see-work"
+                >
+                  See my work
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       {/* ── 2. WORKING EXPERIENCE & WORK READINESS (Exact Match to Image 1) ── */}

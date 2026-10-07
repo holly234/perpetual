@@ -27,7 +27,7 @@ export default function HomePage() {
         {/* Background Image: face stays completely bright and unobstructed */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/assets/profile.jpg"
+            src="/assets/hero-portrait.jpg"
             alt="Hero Background"
             fill
             priority

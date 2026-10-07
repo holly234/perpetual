@@ -151,7 +151,7 @@ export default function HomePage() {
 
               <div className="border-y border-slate-200/80 divide-y divide-slate-200/80">
                 {/* Row 1 */}
-                <div className="flex items-center justify-between py-6">
+                <div className="flex items-center py-6">
                   <div className="flex items-center gap-4 sm:gap-5">
                     <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
                       <Award size={22} className="text-slate-900" strokeWidth={1.75} />
@@ -165,11 +165,10 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
                 </div>
 
                 {/* Row 2 */}
-                <div className="flex items-center justify-between py-6">
+                <div className="flex items-center py-6">
                   <div className="flex items-center gap-4 sm:gap-5">
                     <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
                       <Wifi size={22} className="text-slate-900" strokeWidth={1.75} />
@@ -183,11 +182,10 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
                 </div>
 
                 {/* Row 3 */}
-                <div className="flex items-center justify-between py-6">
+                <div className="flex items-center py-6">
                   <div className="flex items-center gap-4 sm:gap-5">
                     <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
                       <Clock size={22} className="text-slate-900" strokeWidth={1.75} />
@@ -201,7 +199,6 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
-                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
                 </div>
               </div>
             </div>

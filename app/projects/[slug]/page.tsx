@@ -31,7 +31,12 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
   if (!project) notFound();
 
   const isExternalLive = project.liveUrl && project.liveUrl.startsWith("http");
-  const screenshot = project.image || `/project-screenshots/${project.slug}/1.jpg`;
+  const isVADeliverable = project.slug === "client-lead-cleanup" || project.slug === "executive-notion-hub";
+  const screenshot = isVADeliverable
+    ? (project.slug === "client-lead-cleanup"
+        ? "/project-screenshots/client-lead-cleanup/spreadsheet-clean.png"
+        : "/project-screenshots/executive-notion-hub/notion-workspace.png")
+    : `/project-screenshots/${project.slug}/1.jpg`;
 
   return (
     <main className="projects-screen py-8 sm:py-12 bg-white">

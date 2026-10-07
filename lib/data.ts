@@ -105,10 +105,9 @@ export const projects = [
     operationsLabel: "Booking & Payment Workflow",
     summary: "Luxury car rental platform with a full online booking funnel — request form, calendar availability, and conversion-focused confirmation flow.",
     businessImpact: "Replaced manual WhatsApp bookings with an automated online system, cutting admin time by ~70%.",
-    image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/vip-rentals/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/vip-rentals/1.jpg"
     ],
     stack: ["WordPress", "Booking Integration", "Payment Workflow"],
     metrics: ["Automated booking flow", "Availability calendar", "Confirmation emails"],
@@ -125,10 +124,9 @@ export const projects = [
     operationsLabel: "E-Commerce Operations",
     summary: "Football jersey ecommerce with product catalog, cart management, and WhatsApp/Instagram social checkout flow.",
     businessImpact: "Structured a previously DM-based sales process into a browsable catalog with clear order paths.",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/futeball-for-all-demo/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/futeball-for-all-demo/1.jpg"
     ],
     stack: ["Ecommerce UX", "Catalog System", "WhatsApp Checkout"],
     metrics: ["Product filtering", "Cart management", "Social order routing"],
@@ -145,10 +143,9 @@ export const projects = [
     operationsLabel: "Lead Capture System",
     summary: "Auto detailing website with service packages, trust-building content, and booking-focused CTAs that turn visitors into booked clients.",
     businessImpact: "Structured service offering and added a clear lead capture path — reduced friction between visit and first contact.",
-    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/car-detailing-demo/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/car-detailing-demo/1.jpg"
     ],
     stack: ["Next.js", "Service Pages", "CTA Optimization"],
     metrics: ["Package pricing", "Lead CTAs", "Mobile-first layout"],
@@ -165,10 +162,9 @@ export const projects = [
     operationsLabel: "Table Reservation Workflow",
     summary: "Refined restaurant website with seasonal menu presentation and a direct table reservation experience that reduces no-shows.",
     businessImpact: "Replaced a phone-only reservation system with an always-available online booking flow.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/p-chow-restaurant/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/p-chow-restaurant/1.jpg"
     ],
     stack: ["Restaurant Website", "Reservation UX", "Menu System"],
     metrics: ["Seasonal menu display", "Reservation flow", "Dining atmosphere"],
@@ -185,10 +181,9 @@ export const projects = [
     operationsLabel: "Rental Management System",
     summary: "Car rental website with vehicle browsing, fleet display, and conversion-focused rental flow.",
     businessImpact: "Gave a rental business a 24/7 self-serve fleet discovery system in place of manual enquiries.",
-    image: "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/car-rental-demo/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/car-rental-demo/1.jpg"
     ],
     stack: ["Next.js", "Rental UX", "Responsive UI"],
     metrics: ["Fleet browsing", "Rental CTAs", "Mobile-first"],
@@ -205,10 +200,9 @@ export const projects = [
     operationsLabel: "Appointment Scheduling System",
     summary: "Pet grooming website with service cards, appointment-focused content, and trust-building sections for local clients.",
     businessImpact: "Turned a social-media-only grooming business into a credible, bookable local service.",
-    image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1400&q=80",
+    image: "/project-screenshots/dog-groomer-demo/1.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=1200&q=80"
+      "/project-screenshots/dog-groomer-demo/1.jpg"
     ],
     stack: ["Next.js", "Appointment UX", "Local SEO"],
     metrics: ["Service cards", "Appointment CTAs", "Trust sections"],
@@ -225,10 +219,9 @@ export const projects = [
     operationsLabel: "Field Service Operations",
     summary: "One-page arborist website with emergency CTA, machinery proof, services and project gallery — built for credibility and quick contact.",
     businessImpact: "Established web credibility for a field-service business competing against larger contractors.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e1/Worker_trimming_a_tree_next_to_a_house.jpg",
+    image: "/project-screenshots/canopy-root-arborist-demo/1.jpg",
     gallery: [
-      "https://upload.wikimedia.org/wikipedia/commons/e/e1/Worker_trimming_a_tree_next_to_a_house.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/7/72/Rotor_stump_grinder_at_work.jpg"
+      "/project-screenshots/canopy-root-arborist-demo/1.jpg"
     ],
     stack: ["One-page Website", "Emergency CTA", "Service Gallery"],
     metrics: ["Emergency response CTA", "Equipment showcase", "Gallery proof"],

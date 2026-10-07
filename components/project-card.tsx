@@ -6,8 +6,12 @@ type Project = (typeof projects)[number];
 
 export function ProjectCard({ project }: { project: Project }) {
   const displayTitle = project.title.replace(/\s+demo$/i, "");
-  const screenshot = project.image || `/project-screenshots/${project.slug}/1.jpg`;
   const isVADeliverable = project.slug === "client-lead-cleanup" || project.slug === "executive-notion-hub";
+  const screenshot = isVADeliverable
+    ? (project.slug === "client-lead-cleanup"
+        ? "/project-screenshots/client-lead-cleanup/spreadsheet-clean.png"
+        : "/project-screenshots/executive-notion-hub/notion-workspace.png")
+    : `/project-screenshots/${project.slug}/1.jpg`;
   const hasExternalLink = Boolean(project.liveUrl && project.liveUrl.startsWith("http") && !isVADeliverable);
 
   return (

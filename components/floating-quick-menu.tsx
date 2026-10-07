@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Briefcase, Clock, Mail, MessageCircle, Download, X, MessageCircleMore } from "lucide-react";
+import { Briefcase, Clock, Mail, MessageCircle, Download, X, Sparkles } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
 import { siteConfig } from "@/lib/site";
 
@@ -170,7 +170,7 @@ export function FloatingQuickMenu() {
           {isOpen ? (
             <X size={22} strokeWidth={2} />
           ) : (
-            <MessageCircleMore size={24} strokeWidth={2} className="text-white" />
+            <Sparkles size={22} strokeWidth={2} className="text-white fill-white/20 animate-[pulse_3s_ease-in-out_infinite]" />
           )}
         </span>
       </button>

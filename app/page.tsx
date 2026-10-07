@@ -22,8 +22,8 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-slate-900">
       <StructuredData data={professionalServiceSchema("/")} />
 
-      {/* ── 1. HERO SECTION (80vh Desktop / 100vh Mobile with Content Brought Down) ── */}
-      <section className="relative w-full h-[100dvh] min-h-[100dvh] lg:h-[80vh] lg:min-h-[80vh] flex flex-col justify-end overflow-hidden bg-slate-900 text-white">
+      {/* ── 1. HERO SECTION (80vh Mobile & Desktop) ── */}
+      <section className="relative w-full h-[80vh] min-h-[80vh] flex flex-col justify-end overflow-hidden bg-slate-900 text-white">
         {/* Background Image: face stays completely bright and unobstructed */}
         <div className="absolute inset-0 z-0">
           <Image

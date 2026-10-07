@@ -30,22 +30,24 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
   if (!project) notFound();
 
   return (
-    <main className="projects-screen">
-      <section className="container-page py-8 sm:py-10">
-        <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white">
-          <ArrowLeft size={16} /> Back to projects
+    <main className="projects-screen py-8 sm:py-12">
+      <section className="container-page">
+        <Link href="/projects" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-slate-900">
+          <ArrowLeft size={14} /> Back to Selected Works
         </Link>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end border-b border-slate-200 pb-8">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">{project.category}</p>
-            <h1 className="mt-4 text-5xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">{project.title}</h1>
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">{project.category}</span>
+            <h1 className="mt-3 text-4xl sm:text-6xl font-bold tracking-tight text-slate-900 leading-[1.05]">
+              {project.title}
+            </h1>
           </div>
           <div className="max-w-2xl lg:justify-self-end">
-            <p className="text-lg leading-8 text-slate-300">{project.summary}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <p className="text-base sm:text-lg leading-relaxed text-slate-600">{project.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
               {project.stack.map((item) => (
-                <span key={item} className="border border-white/15 bg-white/5 px-3 py-1 text-sm text-slate-200">
+                <span key={item} className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-700">
                   {item}
                 </span>
               ))}
@@ -53,16 +55,21 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
           </div>
         </div>
 
-        <div className="mt-8 overflow-hidden border-4 border-white bg-white shadow-[12px_12px_0_#2563eb]">
-          <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-100 px-4 py-3">
-            <p className="text-sm font-black text-slate-900">Live website preview</p>
-            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-black text-slate-700 transition hover:text-slate-950">
-              Open site <ExternalLink size={14} />
+        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs">
+          <div className="flex items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-4 py-3">
+            <p className="text-xs font-bold text-slate-800">Live system preview</p>
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition"
+            >
+              Open live system <ExternalLink size={13} />
             </a>
           </div>
           <iframe
             src={project.embedUrl}
-            title={`${project.title} live website preview`}
+            title={`${project.title} live system preview`}
             className="h-[72vh] min-h-[560px] w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

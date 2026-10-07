@@ -219,7 +219,7 @@ export function organizationSchema() {
     url: siteConfig.url,
     logo: absoluteUrl(siteConfig.logo),
     email: siteConfig.email,
-    sameAs: [siteConfig.social.instagram, siteConfig.social.tiktok]
+    sameAs: [siteConfig.social.linkedin, siteConfig.social.whatsapp]
   };
 }
 

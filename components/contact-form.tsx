@@ -49,7 +49,7 @@ export function ContactForm() {
       <Button type="submit" className="mt-6 w-full">
         Start a Project
       </Button>
-      {status && <p className="mt-4 bg-blue-950 px-4 py-3 text-sm font-semibold text-blue-200">{status}</p>}
+      {status && <p className="mt-4 rounded-lg bg-slate-900 px-4 py-3 text-sm font-medium text-white">{status}</p>}
     </form>
   );
 }

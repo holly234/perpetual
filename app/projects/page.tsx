@@ -5,41 +5,47 @@ import { projects } from "@/lib/data";
 import { createMetadata } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
-  title: "Projects",
+  title: "Selected Works — Business Solutions Built",
   description:
-    "Simple portfolio of live website projects by Perpetual Dev.",
+    "Real projects by Olamide Titus — booking funnels, product catalogs, payment workflows and lead capture systems that solved real business problems.",
   path: "/projects"
 });
 
 export default function ProjectsPage() {
   return (
-    <main className="projects-screen">
+    <main className="projects-screen py-8 sm:py-12">
       <section className="container-page">
         <MotionDiv
           initial="hidden"
           animate="visible"
           variants={fadeUp}
           transition={{ duration: 0.65 }}
-          className="grid gap-10 border-b border-white/15 pb-8 pt-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end"
+          className="border-b border-slate-200 pb-10 pt-4"
         >
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">Projects</p>
-            <h1 className="mt-5 max-w-4xl text-5xl font-black leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">
-              Selected website work.
+          <div className="max-w-3xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Selected Works</span>
+            <h1 className="mt-3 text-4xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-[1.05]">
+              Business systems I&apos;ve built.
             </h1>
-          </div>
-          <div className="max-w-xl lg:justify-self-end">
-            <p className="text-lg leading-8 text-slate-300">
-              A curated selection of websites designed for clear positioning, strong presentation and effortless browsing.
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">
+              Each project below solved a real operational bottleneck — from replacing manual WhatsApp bookings to building automated lead intake funnels and payment flows.
             </p>
           </div>
         </MotionDiv>
       </section>
 
-      <section className="py-8 sm:py-10">
-        <div className="container-page grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <section className="py-10 sm:py-14">
+        <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <MotionDiv key={project.slug} className="h-full" initial="hidden" whileInView="visible" viewport={viewport} variants={fadeUp} transition={{ duration: 0.6, delay: index * 0.04 }}>
+            <MotionDiv
+              key={project.slug}
+              className="h-full"
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              variants={fadeUp}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+            >
               <ProjectCard project={project} />
             </MotionDiv>
           ))}

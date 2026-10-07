@@ -15,8 +15,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Perpetual Dev | Web Design, SEO & Business Websites",
-    template: "%s | Perpetual Dev"
+    default: "Olamide Titus | Operations & Support Specialist",
+    template: "%s | Olamide Titus"
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -24,18 +24,18 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.name,
   keywords: [
-    "web design agency",
-    "business website design",
-    "SEO optimization",
-    "booking website design",
-    "Google Business Profile optimization",
-    "small business website design"
+    "operations specialist",
+    "remote support specialist",
+    "virtual assistant",
+    "customer support remote",
+    "executive assistant remote",
+    "admin support specialist"
   ],
   alternates: {
     canonical: siteConfig.url
   },
   openGraph: {
-    title: "Perpetual Dev | Web Design, SEO & Business Websites",
+    title: "Olamide Titus | Operations & Support Specialist",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: absoluteUrl("/assets/logo.png"),
         width: 1200,
         height: 630,
-        alt: "Perpetual Dev"
+        alt: "Olamide Titus — Operations & Support Specialist"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Perpetual Dev | Web Design, SEO & Business Websites",
+    title: "Olamide Titus | Operations & Support Specialist",
     description: siteConfig.description,
     images: [absoluteUrl("/assets/logo.png")]
   },

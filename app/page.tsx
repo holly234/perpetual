@@ -1,136 +1,269 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { HomeGsap } from "@/components/home-gsap";
+import { ArrowRight, Download, Mail, Monitor, Wifi, Clock, ArrowUpRight, MessageSquare, FileText, Workflow } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
+import { MessageCircle } from "lucide-react";
 import { ProjectCard } from "@/components/project-card";
-import { Button } from "@/components/ui/button";
 import { StructuredData } from "@/components/structured-data";
-import { projects, services } from "@/lib/data";
+import { projects } from "@/lib/data";
 import { professionalServiceSchema } from "@/lib/seo-data";
-import { createMetadata } from "@/lib/site";
+import { createMetadata, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
-  title: "Simple Web Design Portfolio",
-  description: "Perpetual Dev portfolio featuring live website work and clean business website builds.",
+  title: "Olamide Titus — Operations & Support Specialist",
+  description:
+    "Remote Operations & Support Specialist. Customer care, executive admin support, and web system automation for growing teams worldwide.",
   path: "/"
 });
 
-const studioImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2200&q=95",
-  "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=900&h=1600&q=95",
-  "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1800&q=95"
-];
-
-const marqueeItems = ["Portfolio sites", "Booking pages", "Local business websites", "Mobile layouts", "Live demos", "Clean builds"];
-
 export default function HomePage() {
   return (
-    <main className="retro-page">
+    <main className="min-h-screen bg-white text-slate-900">
       <StructuredData data={professionalServiceSchema("/")} />
-      <HomeGsap>
-        <section className="retro-hero relative overflow-hidden">
-          <div className="retro-grid-bg" />
-          <div className="container-page relative grid min-h-[calc(100vh-7rem)] gap-10 py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p data-hero-text className="retro-kicker">Perpetual Dev / Portfolio</p>
-            <h1 data-hero-text className="mt-5 max-w-4xl text-5xl font-black leading-[0.92] tracking-[-0.055em] text-white sm:text-7xl lg:text-8xl">
-              Clean business websites. No clutter.
-            </h1>
-            <p data-hero-text className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
-              Portfolio, booking and local business websites with strong images, simple structure and live previews.
-            </p>
-            <div data-hero-text className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/projects" className="retro-btn-primary">View Projects</Button>
-              <Button href="/contact" variant="secondary" className="retro-btn-secondary">
-                Contact Me
-              </Button>
-            </div>
-          </div>
 
-          <div className="retro-collage grid min-h-[560px] grid-cols-6 grid-rows-6 gap-4">
-            <div data-hero-image data-parallax className="retro-image-card relative col-span-3 row-span-4 overflow-hidden lg:col-span-4">
-              <Image src={studioImages[0]} alt="Website analytics displayed on a laptop" fill priority quality={95} sizes="(min-width: 1024px) 44vw, 72vw" className="object-cover object-center" />
-            </div>
-            <div data-hero-image data-float-slow className="retro-image-card retro-tilt-right relative col-span-3 row-span-3 overflow-hidden lg:col-span-2">
-              <Image src={studioImages[1]} alt="Professional car detailing and customization" fill priority quality={95} sizes="(min-width: 1024px) 22vw, 34vw" className="object-cover object-[58%_center]" />
-            </div>
-            <div data-hero-image data-float-slow className="retro-stat col-span-3 row-span-1 grid place-items-center p-5 text-center lg:col-span-2">
-              <Sparkles size={22} />
-              <p className="mt-2 text-sm font-semibold">Live website work</p>
-            </div>
-            <div data-hero-image className="retro-image-card retro-tilt-left relative col-span-3 row-span-2 overflow-hidden">
-              <Image src={studioImages[2]} alt="Designer working on a polished website interface" fill quality={95} sizes="(min-width: 1024px) 28vw, 50vw" className="object-cover object-center" />
-            </div>
-            <div data-hero-image data-float-slow className="retro-number-card col-span-3 row-span-2 flex flex-col justify-between p-5">
-              <p className="text-sm font-black uppercase tracking-[0.18em] opacity-80">Built with purpose</p>
-              <p className="max-w-[12ch] text-2xl font-black leading-[1.05] tracking-[-0.04em] sm:text-3xl">
-                Sharp. Fast. Easy to use.
-              </p>
-            </div>
-          </div>
-          </div>
-        </section>
+      {/* ── 1. HERO SECTION (Exact Match to User Inspo Screenshot) ── */}
+      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28">
+        <div className="w-[90%] mx-[5%]">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
 
-        <section className="retro-marquee overflow-hidden py-5">
-          <div data-marquee-track className="flex w-max gap-3">
-            {[...marqueeItems, ...marqueeItems].map((item, index) => (
-              <span key={`${item}-${index}`} className="retro-marquee-pill px-5 py-3 text-sm font-black uppercase tracking-[0.12em]">
-                {item}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        <section className="portfolio-work-band py-10 sm:py-12">
-          <div className="container-page">
-          <div data-reveal className="mb-6 flex flex-col justify-between gap-4 border-b border-white/15 pb-5 sm:flex-row sm:items-end">
+            {/* Left Column: Avatar + Hello! I'm Olamide Titus */}
             <div>
-              <p className="eyebrow">Work</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl">Live website previews.</h2>
+              <div className="relative w-14 h-14 rounded-full overflow-hidden mb-8 border border-slate-200 shadow-xs">
+                <Image
+                  src="/assets/profile.jpg"
+                  alt="Olamide Titus"
+                  fill
+                  priority
+                  quality={95}
+                  className="object-cover object-top"
+                />
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-[1.1]">
+                Hello! I&apos;m Olamide <br />
+                Titus
+              </h1>
             </div>
-            <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-white">
-              All projects <ArrowRight size={16} />
-            </Link>
+
+            {/* Right Column: Title + Subtitle + Buttons */}
+            <div className="lg:pt-2">
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900 leading-snug">
+                An Operations &amp; Support Specialist based in Nigeria.
+              </h2>
+              <p className="mt-3.5 text-xs sm:text-sm text-slate-500 font-normal">
+                Passionate about scaling customer support, inbox zero, and reliable web workflows for global teams.
+              </p>
+
+              <div className="mt-7 flex items-center gap-3">
+                <a
+                  href={siteConfig.social.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl bg-black px-6 py-2.5 text-xs sm:text-sm font-medium !text-white hover:bg-slate-800 transition"
+                  id="hero-whatsapp-cta"
+                >
+                  Talk with me
+                </a>
+
+                <Link
+                  href="#works"
+                  className="rounded-xl border border-slate-200 bg-white px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:bg-slate-50 transition"
+                  id="hero-see-work"
+                >
+                  See my work
+                </Link>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── 2. WORKING EXPERIENCE & WORK READINESS (Exact Match to Image 1) ── */}
+      <section id="superpowers" className="bg-[#f7f6f2] py-20 sm:py-28 border-b border-slate-200/80">
+        <div className="w-[90%] mx-[5%]">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+
+            {/* Left Column: Working experience */}
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900 mb-8 sm:mb-10">
+                Working experience
+              </h2>
+
+              <div className="border-y border-slate-200/80 divide-y divide-slate-200/80">
+                {/* Row 1 */}
+                <div className="flex items-center gap-4 sm:gap-5 py-6">
+                  <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                    <MessageSquare size={22} className="text-slate-900" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                      Customer support at <span className="font-semibold text-slate-900">Zendesk &amp; Intercom</span>
+                    </p>
+                    <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                      &lt;15 min turnaround · Ticket triage &amp; live chat
+                    </p>
+                  </div>
+                </div>
+
+                {/* Row 2 */}
+                <div className="flex items-center gap-4 sm:gap-5 py-6">
+                  <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                    <FileText size={22} className="text-slate-900" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                      Executive admin at <span className="font-semibold text-slate-900">Notion &amp; Google Workspace</span>
+                    </p>
+                    <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                      Inbox zero, calendar coordination &amp; team SOPs
+                    </p>
+                  </div>
+                </div>
+
+                {/* Row 3 */}
+                <div className="flex items-center gap-4 sm:gap-5 py-6">
+                  <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                    <Workflow size={22} className="text-slate-900" strokeWidth={1.75} />
+                  </div>
+                  <div>
+                    <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                      Web systems &amp; automation with <span className="font-semibold text-slate-900">n8n &amp; Custom Code</span>
+                    </p>
+                    <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                      Custom API pipelines, webhooks &amp; scripts
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Work Readiness */}
+            <div id="readiness">
+              <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900 mb-8 sm:mb-10">
+                Work readiness
+              </h2>
+
+              <div className="border-y border-slate-200/80 divide-y divide-slate-200/80">
+                {/* Row 1 */}
+                <div className="flex items-center justify-between py-6">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                      <Monitor size={22} className="text-slate-900" strokeWidth={1.75} />
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                        Hardware &amp; equipment at <span className="font-semibold text-slate-900">Production Ready</span>
+                      </p>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                        16GB RAM PC, dual displays &amp; noise-cancelling audio
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
+                </div>
+
+                {/* Row 2 */}
+                <div className="flex items-center justify-between py-6">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                      <Wifi size={22} className="text-slate-900" strokeWidth={1.75} />
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                        Power &amp; internet at <span className="font-semibold text-slate-900">24/7 Uptime</span>
+                      </p>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                        Solar inverter backup, 50+ Mbps fiber &amp; 4G failover
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
+                </div>
+
+                {/* Row 3 */}
+                <div className="flex items-center justify-between py-6">
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl border border-slate-200/90 bg-white text-slate-900 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+                      <Clock size={22} className="text-slate-900" strokeWidth={1.75} />
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base font-normal text-slate-800 leading-snug">
+                        Timezone overlap for <span className="font-semibold text-slate-900">Global Teams</span>
+                      </p>
+                      <p className="mt-1 text-xs sm:text-sm text-slate-400 font-normal">
+                        EST (9 AM–5 PM) · GMT (7 AM–5 PM) · CET (9 AM–6 PM)
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowUpRight size={19} className="text-slate-800 shrink-0 ml-4" strokeWidth={1.8} />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. SELECTED WORKS (Warm Canvas, Clean 2x2 Mockup Cards) ───── */}
+      <section id="works" className="bg-[#f7f6f2] py-20 sm:py-28 border-b border-slate-200/80">
+        <div className="w-[90%] mx-[5%]">
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
+              Selected works
+            </h2>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {projects.map((project) => (
-              <div key={project.slug} className="h-full" data-reveal>
+          <div className="grid gap-6 md:grid-cols-2">
+            {projects.slice(0, 4).map((project) => (
+              <div key={project.slug} className="h-full">
                 <ProjectCard project={project} />
               </div>
             ))}
           </div>
-          </div>
-        </section>
 
-        <section className="portfolio-band-alt py-10">
-          <div className="container-page">
-          <div data-reveal className="retro-service-strip grid gap-4 p-6 sm:grid-cols-3 sm:p-8">
-            {services.slice(0, 3).map((service) => (
-              <div key={service.title}>
-                <h3 className="text-lg font-semibold tracking-tight">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[color:var(--muted)]">{service.text}</p>
-              </div>
-            ))}
+          <div className="mt-12 text-center">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:bg-slate-50 transition shadow-xs"
+            >
+              <span>View all systems &amp; projects</span>
+              <ArrowRight size={15} />
+            </Link>
           </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="portfolio-band py-10 pb-16">
-          <div className="container-page">
-          <div data-reveal className="retro-cta p-8 text-white sm:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] opacity-70">Start a project</p>
-            <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-              <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.04em] sm:text-5xl">Need a clean website?</h2>
-              <Button href="/contact" variant="secondary" className="retro-btn-secondary">
-                Let&apos;s Talk
-              </Button>
-            </div>
+      {/* ── 4. LET'S TALK WITH ME (Exact Inspo Proportions & Spacing) ── */}
+      <section id="contact" className="bg-white py-16 sm:py-20 text-center">
+        <div className="w-[90%] mx-[5%] max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm font-normal text-slate-400">
+            Have a project or remote role?
+          </p>
+
+          <h2 className="mt-2 text-3xl sm:text-4xl font-normal tracking-tight text-slate-900">
+            Let&apos;s talk with me
+          </h2>
+
+          <div className="mt-5 flex justify-center">
+            <a
+              href={siteConfig.social.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-black px-6 py-2.5 text-xs sm:text-sm font-medium !text-white hover:bg-slate-800 transition shadow-xs"
+              id="cta-talk-button"
+            >
+              Talk with me
+            </a>
           </div>
-          </div>
-        </section>
-      </HomeGsap>
+
+          <p className="mt-3.5 text-xs font-normal text-slate-400">
+            My local time: Lagos, Nigeria · WAT (UTC+1)
+          </p>
+        </div>
+      </section>
+
     </main>
   );
 }

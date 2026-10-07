@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Perpetual Dev",
-  legalName: "Perpetual Dev",
+  name: "Olamide Titus",
+  legalName: "Olamide Titus",
   description:
-    "Perpetual Dev designs and builds premium business websites, booking websites, SEO-ready pages and web systems for companies worldwide.",
+    "Olamide Titus is an Operations & Support Specialist delivering fast customer care, executive admin support, and web system automation for remote teams worldwide.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://perpetualdev.com",
-  email: "perpetualdev2@gmail.com",
+  email: "olamidetitus2@gmail.com",
+  phone: "07039742741",
   logo: "/assets/logo.png",
+  photo: "/assets/profile.jpg",
+  cv: "/assets/olamide-titus-cv.pdf",
   social: {
-    instagram: "https://www.instagram.com/perpetual_devs",
-    tiktok: "https://www.tiktok.com/@perpetual_devs"
+    linkedin: "https://www.linkedin.com/in/olamide-titus",
+    whatsapp: "https://wa.me/2347039742741"
   },
+  tagline: "Operations & Support Specialist",
   markets: ["United States", "United Kingdom", "Canada", "Australia", "Germany", "Worldwide"]
 };
 

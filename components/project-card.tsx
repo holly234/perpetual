@@ -4,72 +4,56 @@ import { projects } from "@/lib/data";
 
 type Project = (typeof projects)[number];
 
-export function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+export function ProjectCard({ project }: { project: Project; large?: boolean }) {
   const displayTitle = project.title.replace(/\s+demo$/i, "");
-  const displaySummary = project.summary
-    .replace(/\s+demo\b/gi, "")
-    .replace(/\bdemo\s+/gi, "");
-  const screenshots = Array.from(
-    { length: 5 },
-    (_, index) => `/project-screenshots/${project.slug}/${index + 1}.jpg`
-  );
+  const screenshot = `/project-screenshots/${project.slug}/1.jpg`;
 
   return (
-    <article className="project-card group h-full">
-      <a
-        href={project.liveUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Visit ${displayTitle} website`}
-        className={
-          large
-            ? "grid h-full min-h-[390px] lg:grid-cols-[1.2fr_.8fr]"
-            : "flex h-full flex-col"
-        }
-      >
-        <div className={large ? "project-card-media project-card-gallery min-h-[330px] lg:min-h-full" : "project-card-media project-card-gallery aspect-[4/3]"}>
-          {screenshots.map((screenshot, index) => (
-            <div
-              key={screenshot}
-              className={index === 0 ? "project-card-shot project-card-shot-main" : "project-card-shot"}
-            >
-              <Image
-                src={screenshot}
-                alt={`${displayTitle} page screenshot ${index + 1}`}
-                fill
-                sizes={
-                  index === 0
-                    ? "(min-width: 1280px) 22vw, (min-width: 768px) 34vw, 70vw"
-                    : "(min-width: 1280px) 8vw, (min-width: 768px) 13vw, 28vw"
-                }
-                className="object-cover object-top"
-              />
-            </div>
-          ))}
-          <div className="project-card-shade" />
-          <span className="project-card-index" aria-hidden="true">
-            {String(projects.findIndex((item) => item.slug === project.slug) + 1).padStart(2, "0")}
-          </span>
+    <article className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200">
+      {/* Top Preview Showcase Container (Soft Sand/Gray Inset Pad) */}
+      <div className="relative mb-5 w-full overflow-hidden rounded-xl bg-[#f4f3ee] p-3.5 sm:p-4 aspect-[16/10] flex items-center justify-center">
+        <div className="relative w-full h-full overflow-hidden rounded-lg bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-slate-200/60">
+          <Image
+            src={screenshot}
+            alt={displayTitle}
+            fill
+            sizes="(min-width: 1280px) 45vw, (min-width: 768px) 45vw, 90vw"
+            className="object-cover object-top transition duration-300 group-hover:scale-[1.02]"
+          />
         </div>
-        <div className={large ? "flex min-h-full flex-col p-7 sm:p-9" : "flex flex-1 flex-col p-6 sm:p-7"}>
-          <p className="project-card-category">{project.category}</p>
-          <div className="mt-4 flex items-start justify-between gap-5">
-            <h3 className={large ? "text-3xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-4xl" : "text-[1.65rem] font-semibold leading-[1.05] tracking-[-0.04em]"}>
-              {displayTitle}
-            </h3>
-            <span className="project-card-arrow">
-              <ArrowUpRight size={19} strokeWidth={1.8} />
-            </span>
-          </div>
-          <p className={large ? "mt-5 line-clamp-3 max-w-md leading-7 text-[color:var(--muted)]" : "mt-4 line-clamp-2 text-sm leading-6 text-[color:var(--muted)]"}>
-            {displaySummary}
+      </div>
+
+      {/* Card Info & Details */}
+      <div className="flex flex-1 flex-col justify-between">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-normal text-slate-900 tracking-tight leading-snug">
+            {displayTitle}
+          </h3>
+
+          <p className="mt-1 text-xs text-slate-400 font-normal">
+            {project.operationsLabel || project.category}
           </p>
-          <div className="project-card-link mt-auto pt-7">
-            <span>Visit website</span>
-            <span className="project-card-link-line" />
-          </div>
+
+          <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-500 line-clamp-2">
+            {project.businessImpact || project.summary}
+          </p>
         </div>
-      </a>
+
+        {/* Action Button: Clean 8px Rounded Rectangle (Matching Inspo) */}
+        <div className="mt-6">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
+            id={`project-link-${project.slug}`}
+          >
+            <span>View detail works</span>
+            <ArrowUpRight size={13} strokeWidth={2} />
+          </a>
+        </div>
+      </div>
     </article>
   );
 }
+

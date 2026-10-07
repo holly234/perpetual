@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const [, title, description] = industry;
 
   return createMetadata({
-    title: `${title} Website Design`,
+    title: `${title} Operations & Systems`,
     description,
     path: `/industries/${slug}`
   });
@@ -33,25 +33,27 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const [, title, description] = industry;
 
   return (
-    <main className="projects-screen">
-      <section className="container-page py-8 sm:py-10">
-        <Link href="/industries" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white">
-          <ArrowLeft size={16} /> Industries
+    <main className="projects-screen py-8 sm:py-12">
+      <section className="container-page">
+        <Link href="/industries" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 transition hover:text-slate-900">
+          <ArrowLeft size={14} /> Back to Industries
         </Link>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-blue-300">Industry</p>
-            <h1 className="mt-4 text-5xl font-black leading-[0.96] tracking-[-0.055em] text-white sm:text-7xl">{title} Website Design</h1>
-            <p className="mt-5 text-lg leading-8 text-slate-300">{description}</p>
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Industry</span>
+            <h1 className="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
+              {title} Systems
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-slate-600">{description}</p>
           </div>
 
-          <div className="border-4 border-white bg-[#172033] p-6 shadow-[10px_10px_0_#2563eb]">
-            <h2 className="text-xl font-black text-white">Page focus</h2>
-            <div className="mt-5 grid gap-3">
-              {["Clear service presentation", "Mobile-first contact flow", "Trust-building sections", "Search-friendly page structure"].map((item) => (
-                <div key={item} className="flex gap-3 text-slate-200">
-                  <CheckCircle2 className="mt-1 shrink-0 text-blue-300" size={18} />
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
+            <h2 className="text-base font-bold text-slate-900">Operational Deliverables</h2>
+            <div className="mt-4 grid gap-3">
+              {["Clear service presentation", "Mobile-first booking & contact flow", "Trust-building proof & testimonials", "Automated inquiry routing & notifications"].map((item) => (
+                <div key={item} className="flex gap-2.5 text-xs sm:text-sm text-slate-600">
+                  <CheckCircle2 className="mt-0.5 shrink-0 text-blue-600" size={16} />
                   <p>{item}</p>
                 </div>
               ))}

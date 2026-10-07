@@ -1,24 +1,107 @@
 import Link from "next/link";
-import { Navbar } from "@/components/navbar";
+import { Mail, MessageCircle, Download } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
+import { siteConfig } from "@/lib/site";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Navbar />
+
+      {/* Floating Right Social Dock (matching Inspiration Image 1) */}
+      <aside className="floating-social-bar" aria-label="Quick social links">
+        <a
+          href={siteConfig.social.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="social-dock-btn"
+          title="Connect on LinkedIn"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin size={15} />
+        </a>
+        <a
+          href={siteConfig.social.whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          className="social-dock-btn"
+          title="Chat on WhatsApp"
+          aria-label="WhatsApp"
+        >
+          <MessageCircle size={15} />
+        </a>
+        <a
+          href={`mailto:${siteConfig.email}`}
+          className="social-dock-btn"
+          title="Send an Email"
+          aria-label="Email"
+        >
+          <Mail size={15} />
+        </a>
+        <a
+          href={siteConfig.cv}
+          download
+          className="social-dock-btn"
+          title="Download CV"
+          aria-label="Download CV"
+        >
+          <Download size={15} />
+        </a>
+      </aside>
+
       {children}
-      <footer className="border-t border-white/10 bg-[#0f172a] py-6">
-        <div className="container-page flex flex-col justify-between gap-5 text-sm text-[color:var(--muted)] lg:flex-row lg:items-center">
-          <p className="text-slate-400">&copy; 2026 Perpetual Dev.</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-3">
-            <Link href="/" className="text-slate-400 transition hover:text-white">Home</Link>
-            <Link href="/projects" className="text-slate-400 transition hover:text-white">Projects</Link>
-            <Link href="/contact" className="text-slate-400 transition hover:text-white">Contact</Link>
-            <a href="https://www.instagram.com/perpetual_devs" target="_blank" rel="noreferrer" className="text-slate-400 transition hover:text-white">
-              Instagram
-            </a>
-            <a href="https://www.tiktok.com/@perpetual_devs" target="_blank" rel="noreferrer" className="text-slate-400 transition hover:text-white">
-              TikTok
-            </a>
+
+      {/* Clean Minimal Editorial Footer (Exact Inspo Match) */}
+      <footer className="border-t border-slate-200/80 bg-white py-8">
+        <div className="container-page">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            {/* Left: Pure Typographic Identity */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-medium tracking-tight text-slate-900">
+                Olamide Titus
+              </span>
+              <span className="text-xs text-slate-400 font-normal">
+                Operations &amp; Support Specialist
+              </span>
+            </div>
+
+            {/* Right: Clean Editorial Links */}
+            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-normal text-slate-500">
+              <Link href="/#works" className="hover:text-slate-900 transition">
+                Works
+              </Link>
+              <Link href="/#superpowers" className="hover:text-slate-900 transition">
+                Experience
+              </Link>
+              <a
+                href={siteConfig.social.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-900 transition"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={siteConfig.social.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-slate-900 transition"
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="hover:text-slate-900 transition"
+              >
+                Email
+              </a>
+              <a
+                href={siteConfig.cv}
+                download
+                className="hover:text-slate-900 transition"
+              >
+                CV
+              </a>
+            </nav>
           </div>
         </div>
       </footer>

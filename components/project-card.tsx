@@ -1,12 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 
 type Project = (typeof projects)[number];
 
-export function ProjectCard({ project }: { project: Project; large?: boolean }) {
+export function ProjectCard({ project }: { project: Project }) {
   const displayTitle = project.title.replace(/\s+demo$/i, "");
-  const screenshot = `/project-screenshots/${project.slug}/1.jpg`;
+  const screenshot = project.image || `/project-screenshots/${project.slug}/1.jpg`;
+  const isInternal = project.liveUrl.startsWith("/");
 
   return (
     <article className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200">
@@ -41,19 +43,31 @@ export function ProjectCard({ project }: { project: Project; large?: boolean }) 
 
         {/* Action Button: Clean 8px Rounded Rectangle (Matching Inspo) */}
         <div className="mt-6">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
-            id={`project-link-${project.slug}`}
-          >
-            <span>View detail works</span>
-            <ArrowUpRight size={13} strokeWidth={2} />
-          </a>
+          {isInternal ? (
+            <Link
+              href={project.liveUrl}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
+              id={`project-link-${project.slug}`}
+            >
+              <span>View detail works</span>
+              <ArrowUpRight size={13} strokeWidth={2} />
+            </Link>
+          ) : (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
+              id={`project-link-${project.slug}`}
+            >
+              <span>View detail works</span>
+              <ArrowUpRight size={13} strokeWidth={2} />
+            </a>
+          )}
         </div>
       </div>
     </article>
   );
 }
+
 

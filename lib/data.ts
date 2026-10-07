@@ -61,6 +61,44 @@ export const workReadiness = {
 // Projects reframed as business operations solutions
 export const projects = [
   {
+    slug: "client-lead-cleanup",
+    title: "Lead & Contact Database Sanitization",
+    category: "Data Hygiene & Spreadsheet Cleanup",
+    operationsLabel: "Google Sheets & Excel Operations",
+    summary: "Standardized and cleaned 1,200+ raw business contacts — removed duplicates, formatted inconsistent phone/email entries, capitalized clean names, and structured status tags.",
+    businessImpact: "Turned a messy, unformatted contact dump into an organized, validated database ready for email outreach and CRM import.",
+    image: "/project-screenshots/client-lead-cleanup/spreadsheet-clean.png",
+    gallery: [
+      "/project-screenshots/client-lead-cleanup/spreadsheet-clean.png"
+    ],
+    stack: ["Google Sheets", "Excel", "Data Validation", "Formatting", "Status Tagging"],
+    metrics: ["1,200+ rows audited", "100% duplicate removal", "Standardized phone & email"],
+    challenge: "Raw sign-up forms and scattered CSVs resulted in duplicate leads, inconsistent formatting (mixed case names, missing area codes), and no clear status tracking.",
+    solution: "Audited every entry, applied PROPER/TRIM formatting, standardized international phone numbers, eliminated duplicates, and built color-coded status columns.",
+    liveUrl: "/projects/client-lead-cleanup",
+    embedUrl: "",
+    previewType: "Spreadsheet sample"
+  },
+  {
+    slug: "executive-notion-hub",
+    title: "Executive Daily Operations Hub",
+    category: "Executive Assistance & Notion",
+    operationsLabel: "Task & Schedule Coordination",
+    summary: "Designed a centralized Notion workspace for executive daily workflows — daily focus board, weekly calendar agenda, meeting prep checklist, and quick resource bookmarks.",
+    businessImpact: "Consolidated scattered meeting links, daily priorities, and client deliverables into a single, clutter-free operations dashboard.",
+    image: "/project-screenshots/executive-notion-hub/notion-workspace.png",
+    gallery: [
+      "/project-screenshots/executive-notion-hub/notion-workspace.png"
+    ],
+    stack: ["Notion", "Calendar Coordination", "Meeting Prep", "Task Management"],
+    metrics: ["Daily priority tracking", "Meeting agendas ready 24h prior", "Single source of truth"],
+    challenge: "Executive priorities and meeting links were scattered across email threads and chat messages, leading to missed action items and prep rush.",
+    solution: "Built a structured Notion cockpit with 'Today's Priorities', weekly calendar sync, structured meeting agendas with prep checklists, and asset bookmarks.",
+    liveUrl: "/projects/executive-notion-hub",
+    embedUrl: "",
+    previewType: "Workspace sample"
+  },
+  {
     slug: "vip-rentals",
     title: "VIP Rentals Booking System",
     category: "Booking Funnel",

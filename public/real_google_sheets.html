@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client & Lead Database (Cleaned & Standardized) - Google Sheets</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #f8f9fa;
+      color: #202124;
+      font-size: 12px;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px 4px 12px;
+      background: #fff;
+    }
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sheets-icon {
+      width: 36px;
+      height: 36px;
+      background: #0f9d58;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 900;
+      font-size: 20px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+    .file-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .doc-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #1f1f1f;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .star-icon, .cloud-icon {
+      color: #5f6368;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .menu-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      color: #3c4043;
+      padding-left: 6px;
+    }
+    .menu-item { cursor: pointer; }
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .status-text {
+      font-size: 12px;
+      color: #5f6368;
+      margin-right: 6px;
+    }
+    .share-btn {
+      background: #c2e7ff;
+      color: #001d35;
+      font-weight: 500;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1e293b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 16px;
+      background: #edf2fc;
+      border-radius: 24px;
+      margin: 2px 12px 6px 12px;
+      height: 36px;
+      color: #444746;
+      font-size: 12px;
+    }
+    .tool-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tool-btn {
+      padding: 3px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-weight: 500;
+    }
+    .tool-btn.active {
+      background: #d3e3fd;
+      color: #041e49;
+    }
+    .tool-divider {
+      width: 1px;
+      height: 18px;
+      background: #c4c7c5;
+      margin: 0 4px;
+    }
+    .font-select {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 2px 6px;
+      font-size: 12px;
+      color: #1f1f1f;
+      font-weight: 500;
+    }
+
+    /* Formula Bar */
+    .formula-bar {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-top: 1px solid #e0e2e5;
+      border-bottom: 1px solid #c4c7c5;
+      height: 30px;
+      padding: 0 12px;
+      font-family: Roboto, sans-serif;
+    }
+    .cell-name {
+      width: 48px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #444746;
+      text-align: center;
+      border-right: 1px solid #dadce0;
+      padding-right: 8px;
+    }
+    .fx-symbol {
+      padding: 0 10px;
+      font-style: italic;
+      font-weight: 700;
+      color: #72777a;
+      font-size: 13px;
+      border-right: 1px solid #dadce0;
+    }
+    .formula-input {
+      flex: 1;
+      padding-left: 12px;
+      font-family: "Roboto Mono", monospace, sans-serif;
+      font-size: 12px;
+      color: #137333;
+      font-weight: 500;
+    }
+    .formula-input .fn { color: #188038; font-weight: 700; }
+    .formula-input .param { color: #1a73e8; }
+
+    /* Grid Container */
+    .grid-container {
+      flex: 1;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th, td {
+      border-right: 1px solid #e0e2e5;
+      border-bottom: 1px solid #e0e2e5;
+      padding: 5px 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+
+    /* Column Headers A, B, C... */
+    .col-header-row th {
+      background: #f8f9fa;
+      color: #5f6368;
+      font-weight: 500;
+      text-align: center;
+      height: 24px;
+      font-size: 11px;
+      user-select: none;
+    }
+    .row-index {
+      width: 42px;
+      background: #f8f9fa;
+      color: #5f6368;
+      text-align: center;
+      font-weight: 500;
+      font-size: 11px;
+      user-select: none;
+    }
+
+    /* Table Header (Row 1) */
+    .table-header td {
+      background: #1e293b;
+      color: #f8fafc;
+      font-weight: 600;
+      height: 32px;
+      font-size: 11.5px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Data Rows */
+    .data-row { height: 28px; }
+    .data-row:nth-child(even) td { background: #fafafa; }
+    .data-row:hover td { background: #f1f5f9; }
+    .selected-cell {
+      outline: 2px solid #1a73e8;
+      outline-offset: -2px;
+      background: #e8f0fe !important;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .badge-qualified { background: #def7ec; color: #03543f; }
+    .badge-contacted { background: #e1effe; color: #1e429f; }
+    .badge-meeting { background: #edebfe; color: #5521b5; }
+    .badge-followup { background: #fef08a; color: #713f12; }
+    .badge-won { background: #bbf7d0; color: #14532d; }
+    .badge-new { background: #f3f4f6; color: #374151; }
+
+    /* Quality Tags */
+    .quality-tag {
+      color: #0f766e;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+    }
+
+    /* Bottom Sheet Bar */
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 36px;
+      background: #f8f9fa;
+      border-top: 1px solid #dadce0;
+      padding: 0 16px;
+      font-size: 12px;
+    }
+    .sheet-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .tab {
+      padding: 7px 16px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #5f6368;
+      border-radius: 4px 4px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tab.active {
+      background: #fff;
+      color: #137333;
+      border-bottom: 3px solid #0f9d58;
+      font-weight: 600;
+    }
+    .sheet-count {
+      background: #e6f4ea;
+      color: #137333;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-left">
+      <div class="sheets-icon">≡</div>
+      <div class="file-meta">
+        <div class="title-row">
+          <span class="doc-title">Client &amp; Lead Database (Cleaned &amp; Standardized)</span>
+          <span class="star-icon">★</span>
+          <span class="cloud-icon">☁</span>
+        </div>
+        <div class="menu-bar">
+          <span class="menu-item">File</span>
+          <span class="menu-item">Edit</span>
+          <span class="menu-item">View</span>
+          <span class="menu-item">Insert</span>
+          <span class="menu-item">Format</span>
+          <span class="menu-item">Data</span>
+          <span class="menu-item">Tools</span>
+          <span class="menu-item">Extensions</span>
+          <span class="menu-item">Help</span>
+        </div>
+      </div>
+    </div>
+    <div class="top-right">
+      <span class="status-text">All changes saved in Drive</span>
+      <button class="share-btn">🔒 Share</button>
+      <div class="avatar">OT</div>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="tool-group">
+      <span class="tool-btn">↩</span>
+      <span class="tool-btn">↪</span>
+      <span class="tool-btn">🖨</span>
+      <span class="tool-btn">🖌</span>
+      <span class="tool-btn">100%</span>
+    </div>
+    <div class="tool-divider"></div>
+    <div class="tool-group">
+      <span class="tool-btn">$</span>
+      <span class="tool-btn">%</span>
+      <span class="tool-btn">.0</span>
+      <span class="tool-btn">.00</span>
+    </div>
+    <div class="tool-divider"></div>
+    <div class="tool-group">
+      <span class="font-select">Roboto</span>
+      <span class="font-select">10</span>
+    </div>
+    <div class="tool-divider"></div>
+    <div class="tool-group">
+      <span class="tool-btn active"><b>B</b></span>
+      <span class="tool-btn"><i>I</i></span>
+      <span class="tool-btn"><s>S</s></span>
+      <span class="tool-btn">A ▼</span>
+      <span class="tool-btn">🪣 ▼</span>
+    </div>
+    <div class="tool-divider"></div>
+    <div class="tool-group">
+      <span class="tool-btn">田 Borders</span>
+      <span class="tool-btn">≡ Align</span>
+      <span class="tool-btn">⤹ Wrap</span>
+      <span class="tool-btn">⚡ Filter</span>
+      <span class="tool-btn">Σ Functions</span>
+    </div>
+  </div>
+
+  <!-- Formula Bar -->
+  <div class="formula-bar">
+    <div class="cell-name">B4</div>
+    <div class="fx-symbol">fx</div>
+    <div class="formula-input">
+      <span class="fn">=PROPER(TRIM(</span><span class="param">Raw_Input!B4</span><span class="fn">))</span>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-container">
+    <table>
+      <thead>
+        <tr class="col-header-row">
+          <th class="row-index"></th>
+          <th style="width: 75px;">A</th>
+          <th style="width: 155px;">B</th>
+          <th style="width: 180px;">C</th>
+          <th style="width: 160px;">D</th>
+          <th style="width: 220px;">E</th>
+          <th style="width: 145px;">F</th>
+          <th style="width: 135px;">G</th>
+          <th style="width: 145px;">H</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 1: Header -->
+        <tr class="table-header">
+          <td class="row-index" style="background: #0f172a; color: #94a3b8;">1</td>
+          <td>Lead ID</td>
+          <td>Full Name</td>
+          <td>Company Name</td>
+          <td>Job Title</td>
+          <td>Verified Email</td>
+          <td>Cleaned Phone (E.164)</td>
+          <td>Lead Stage</td>
+          <td>Audit Status</td>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr class="data-row">
+          <td class="row-index">2</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1081</td>
+          <td style="font-weight:500;">Marcus Vance</td>
+          <td>Vance Logistics Ltd</td>
+          <td style="color:#475569;">VP of Operations</td>
+          <td style="color:#0f766e;">marcus.vance@vancelogistics.com</td>
+          <td>+1 (415) 892-4410</td>
+          <td><span class="badge badge-qualified">Qualified</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 3 -->
+        <tr class="data-row">
+          <td class="row-index">3</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1082</td>
+          <td style="font-weight:500;">Sophia Sterling</td>
+          <td>Sterling Health Partners</td>
+          <td style="color:#475569;">Managing Director</td>
+          <td style="color:#0f766e;">sophia@sterlinghealth.co</td>
+          <td>+1 (212) 674-8832</td>
+          <td><span class="badge badge-contacted">Contacted</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 4 (Selected Cell) -->
+        <tr class="data-row">
+          <td class="row-index">4</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1083</td>
+          <td class="selected-cell" style="font-weight:600; color:#1e293b;">Elena Rostova</td>
+          <td>Rostova Dynamics LLC</td>
+          <td style="color:#475569;">Head of Procurement</td>
+          <td style="color:#0f766e;">elena.r@rostovadyn.io</td>
+          <td>+44 20 7946 0912</td>
+          <td><span class="badge badge-meeting">Meeting Set</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 5 -->
+        <tr class="data-row">
+          <td class="row-index">5</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1084</td>
+          <td style="font-weight:500;">David K. Miller</td>
+          <td>Apex Growth Capital</td>
+          <td style="color:#475569;">Managing Partner</td>
+          <td style="color:#0f766e;">dmiller@apexgrowth.com</td>
+          <td>+1 (312) 554-1904</td>
+          <td><span class="badge badge-followup">Follow-Up Req.</span></td>
+          <td><span class="quality-tag">✓ Format Corrected</span></td>
+        </tr>
+
+        <!-- Row 6 -->
+        <tr class="data-row">
+          <td class="row-index">6</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1085</td>
+          <td style="font-weight:500;">Amara Okafor</td>
+          <td>Okafor Retail Group</td>
+          <td style="color:#475569;">Operations Director</td>
+          <td style="color:#0f766e;">amara@okaforgroup.ng</td>
+          <td>+234 802 311 9021</td>
+          <td><span class="badge badge-qualified">Qualified</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 7 -->
+        <tr class="data-row">
+          <td class="row-index">7</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1086</td>
+          <td style="font-weight:500;">Jordan Patel</td>
+          <td>Kinetic Studio London</td>
+          <td style="color:#475569;">Creative Director</td>
+          <td style="color:#0f766e;">jordan@kineticstudio.co.uk</td>
+          <td>+44 20 8123 4455</td>
+          <td><span class="badge badge-contacted">Contacted</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 8 -->
+        <tr class="data-row">
+          <td class="row-index">8</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1087</td>
+          <td style="font-weight:500;">Chloe Bennett</td>
+          <td>Horizon Supply Chain</td>
+          <td style="color:#475569;">Procurement Manager</td>
+          <td style="color:#0f766e;">cbennett@horizonsupply.com</td>
+          <td>+1 (617) 492-3301</td>
+          <td><span class="badge badge-new">New Inbound</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 9 -->
+        <tr class="data-row">
+          <td class="row-index">9</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1088</td>
+          <td style="font-weight:500;">Liam O'Connor</td>
+          <td>Beacon Advisory Partners</td>
+          <td style="color:#475569;">Senior Director</td>
+          <td style="color:#0f766e;">l.oconnor@beaconadvisory.ie</td>
+          <td>+353 1 496 0122</td>
+          <td><span class="badge badge-qualified">Qualified</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 10 -->
+        <tr class="data-row">
+          <td class="row-index">10</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1089</td>
+          <td style="font-weight:500;">Rachel Green</td>
+          <td>Apex Media Global</td>
+          <td style="color:#475569;">VP Marketing</td>
+          <td style="color:#0f766e;">rachel.g@apexmediaglobal.com</td>
+          <td>+1 (415) 609-3221</td>
+          <td><span class="badge badge-won">Closed Won</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 11 -->
+        <tr class="data-row">
+          <td class="row-index">11</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1090</td>
+          <td style="font-weight:500;">Ethan Wright</td>
+          <td>Wright &amp; Partners Law</td>
+          <td style="color:#475569;">Senior Partner</td>
+          <td style="color:#0f766e;">ewright@wrightlaw.com</td>
+          <td>+1 (202) 555-0198</td>
+          <td><span class="badge badge-contacted">Contacted</span></td>
+          <td><span class="quality-tag">✓ Format Corrected</span></td>
+        </tr>
+
+        <!-- Row 12 -->
+        <tr class="data-row">
+          <td class="row-index">12</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1091</td>
+          <td style="font-weight:500;">Maya Lin</td>
+          <td>Pacific Venture Group</td>
+          <td style="color:#475569;">Investment Principal</td>
+          <td style="color:#0f766e;">m.lin@pacificvp.com</td>
+          <td>+1 (650) 843-2210</td>
+          <td><span class="badge badge-meeting">Meeting Set</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 13 -->
+        <tr class="data-row">
+          <td class="row-index">13</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1092</td>
+          <td style="font-weight:500;">Tariq Al-Mansoor</td>
+          <td>Crescent Logistics FZE</td>
+          <td style="color:#475569;">Managing Director</td>
+          <td style="color:#0f766e;">tariq@crescentlog.ae</td>
+          <td>+971 4 321 8890</td>
+          <td><span class="badge badge-followup">Follow-Up Req.</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+
+        <!-- Row 14 -->
+        <tr class="data-row">
+          <td class="row-index">14</td>
+          <td style="color:#64748b; font-family:monospace;">LID-1093</td>
+          <td style="font-weight:500;">Sarah Jenkins</td>
+          <td>Jenkins Global Enterprises</td>
+          <td style="color:#475569;">Operations Lead</td>
+          <td style="color:#0f766e;">s.jenkins@jenkinsglobal.com</td>
+          <td>+1 (305) 778-9943</td>
+          <td><span class="badge badge-qualified">Qualified</span></td>
+          <td><span class="quality-tag">✓ Clean &amp; Validated</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Bottom Sheet Tabs -->
+  <div class="bottom-bar">
+    <div class="sheet-tabs">
+      <span class="tool-btn" style="color:#444746;">+</span>
+      <span class="tool-btn" style="color:#444746;">≡</span>
+      <div class="tab active">
+        <span>Cleaned Database</span>
+        <span class="sheet-count">1,248</span>
+      </div>
+      <div class="tab">
+        <span>Duplicate Review</span>
+        <span class="sheet-count" style="background:#fee2e2; color:#991b1b;">86</span>
+      </div>
+      <div class="tab">
+        <span>Validation Audit Log</span>
+      </div>
+    </div>
+    <div style="color: #64748b; font-size: 11px;">
+      100% formatted · Ready for CRM import
+    </div>
+  </div>
+
+</body>
+</html>

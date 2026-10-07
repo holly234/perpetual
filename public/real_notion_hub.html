@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Executive Daily Operations Hub - Notion</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif;
+      background: #191919;
+      color: #e6e6e6;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #202020;
+      border-right: 1px solid #2f2f2f;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 10px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+    .user-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: #37352f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 11px;
+      color: #d4d4d4;
+    }
+    .workspace-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #d4d4d4;
+      flex: 1;
+    }
+    .sidebar-section {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #787774;
+      padding: 4px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 5px;
+      font-size: 13px;
+      color: #9b9a97;
+      cursor: pointer;
+      transition: background 0.1s;
+    }
+    .sidebar-item:hover {
+      background: #2a2a2a;
+      color: #d4d4d4;
+    }
+    .sidebar-item.active {
+      background: #2c2c2c;
+      color: #f7f7f7;
+      font-weight: 500;
+    }
+    .item-icon {
+      font-size: 14px;
+      width: 18px;
+      text-align: center;
+    }
+
+    /* Main Notion Page */
+    .main-page {
+      flex: 1;
+      overflow-y: auto;
+      background: #191919;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-nav {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid #262626;
+      font-size: 12.5px;
+      color: #9b9a97;
+    }
+    .nav-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Page Content */
+    .content-container {
+      width: 100%;
+      padding: 30px 48px 50px 48px;
+    }
+    .page-icon {
+      font-size: 52px;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .page-title {
+      font-size: 34px;
+      font-weight: 700;
+      color: #f7f7f7;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .page-desc {
+      font-size: 14.5px;
+      color: #8f8e8b;
+      margin-bottom: 24px;
+    }
+
+    /* Notion Callout Box */
+    .callout {
+      display: flex;
+      gap: 14px;
+      background: #202020;
+      border: 1px solid #2d2d2d;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+    .callout-icon { font-size: 20px; line-height: 1.4; }
+    .callout-text { font-size: 14px; color: #d4d4d4; }
+    .callout-text strong { color: #f7f7f7; }
+
+    /* Columns Layout */
+    .columns-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.1fr 1fr;
+      gap: 22px;
+    }
+
+    /* Column Card */
+    .col-card {
+      background: #202020;
+      border: 1px solid #2b2b2b;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 10px;
+    }
+    .col-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #d4d4d4;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .col-badge {
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #2d2d2d;
+      color: #9b9a97;
+    }
+
+    /* Task Items (Checkboxes) */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      color: #d4d4d4;
+      padding: 4px 0;
+    }
+    .checkbox {
+      width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      border: 1.5px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      flex-shrink: 0;
+      font-size: 10px;
+    }
+    .checkbox.checked {
+      background: #2383e2;
+      border-color: #2383e2;
+      color: white;
+    }
+    .task-done {
+      text-decoration: line-through;
+      color: #6d6c69;
+    }
+    .task-tag {
+      font-size: 10.5px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-left: 6px;
+      font-weight: 500;
+      display: inline-block;
+    }
+    .tag-urgent { background: #5c2223; color: #ff8b8b; }
+    .tag-priority { background: #4a3718; color: #f5b041; }
+    .tag-routine { background: #22374a; color: #85c1e9; }
+
+    /* Calendar Events */
+    .event-item {
+      background: #272727;
+      border-left: 3px solid #2383e2;
+      border-radius: 0 5px 5px 0;
+      padding: 9px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .event-time {
+      font-size: 11px;
+      color: #9b9a97;
+      font-weight: 500;
+    }
+    .event-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+    .event-meta {
+      font-size: 11px;
+      color: #787774;
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Meeting Notes / Toggles */
+    .toggle-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: #262626;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .toggle-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #e6e6e6;
+      cursor: pointer;
+    }
+    .toggle-body {
+      font-size: 11.5px;
+      color: #9b9a97;
+      padding-left: 14px;
+      line-height: 1.4;
+    }
+
+    /* Resource Bookmarks */
+    .bookmark {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 9px;
+      background: #262626;
+      border-radius: 5px;
+      font-size: 12.5px;
+      color: #d4d4d4;
+      text-decoration: none;
+      transition: background 0.1s;
+    }
+    .bookmark:hover { background: #2f2f2f; }
+  </style>
+</head>
+<body>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar">
+    <div class="user-profile">
+      <div class="user-avatar">OT</div>
+      <span class="workspace-name">Executive Operations</span>
+      <span style="color:#787774; font-size: 11px;">▾</span>
+    </div>
+
+    <div class="sidebar-item"><span class="item-icon">🔍</span> Search</div>
+    <div class="sidebar-item"><span class="item-icon">✨</span> Notion AI</div>
+    <div class="sidebar-item"><span class="item-icon">📥</span> Inbox <span style="margin-left:auto; background:#37352f; padding:0 5px; border-radius:10px; font-size:10px;">0</span></div>
+
+    <div class="sidebar-section">
+      <span class="section-label">Executive Hubs</span>
+      <div class="sidebar-item active"><span class="item-icon">🎯</span> Executive Ops Hub</div>
+      <div class="sidebar-item"><span class="item-icon">📅</span> Weekly Master Agenda</div>
+      <div class="sidebar-item"><span class="item-icon">📋</span> Priority Action Items</div>
+      <div class="sidebar-item"><span class="item-icon">📝</span> Meeting Briefs &amp; SOPs</div>
+      <div class="sidebar-item"><span class="item-icon">📁</span> Client Deliverables</div>
+      <div class="sidebar-item"><span class="item-icon">🗂️</span> Contracts &amp; Renewals</div>
+    </div>
+  </aside>
+
+  <!-- Main Workspace -->
+  <main class="main-page">
+    <div class="top-nav">
+      <div class="nav-breadcrumbs">
+        <span>Executive Suite</span>
+        <span>/</span>
+        <span style="color:#e6e6e6; font-weight:500;">🎯 Executive Operations Hub</span>
+      </div>
+      <div class="nav-actions">
+        <span>Share</span>
+        <span>💬 2</span>
+        <span>★ Favorite</span>
+        <span>•••</span>
+      </div>
+    </div>
+
+    <div class="content-container">
+      <div class="page-icon">🎯</div>
+      <h1 class="page-title">Executive Daily Operations Hub</h1>
+      <p class="page-desc">Centralized cockpit for executive priorities, calendar coordination, meeting briefings, and deliverables.</p>
+
+      <!-- Callout block -->
+      <div class="callout">
+        <div class="callout-icon">💡</div>
+        <div class="callout-text">
+          <strong>Daily Operational Focus (Wednesday, Oct 7):</strong><br>
+          Board deck appendix finalized &bull; Sterling Health onboarding deck prepped &bull; Inbox Zero target maintained under 15-minute response turnaround.
+        </div>
+      </div>
+
+      <!-- 3 Columns -->
+      <div class="columns-grid">
+
+        <!-- Column 1: Today's Priorities -->
+        <div class="col-card">
+          <div class="col-header">
+            <span class="col-title">📋 Today's Priorities</span>
+            <span class="col-badge">3 of 5 done</span>
+          </div>
+
+          <div class="task-list">
+            <div class="task-item">
+              <div class="checkbox checked">✓</div>
+              <span class="task-done">08:30 AM — Inbox triage &amp; priority flagging <span class="task-tag tag-priority">Inbox Zero</span></span>
+            </div>
+            <div class="task-item">
+              <div class="checkbox checked">✓</div>
+              <span class="task-done">10:00 AM — Briefing sheet for Sterling sync <span class="task-tag tag-priority">Meeting Prep</span></span>
+            </div>
+            <div class="task-item">
+              <div class="checkbox checked">✓</div>
+              <span class="task-done">11:45 AM — Audit cleaned lead list export <span class="task-tag tag-routine">Data Hygiene</span></span>
+            </div>
+            <div class="task-item">
+              <div class="checkbox"></div>
+              <span>02:00 PM — Executive strategy call &amp; live notes <span class="task-tag tag-urgent">Urgent</span></span>
+            </div>
+            <div class="task-item">
+              <div class="checkbox"></div>
+              <span>04:30 PM — Distribute action items &amp; wrap report <span class="task-tag tag-priority">Follow-Up</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Weekly Schedule -->
+        <div class="col-card">
+          <div class="col-header">
+            <span class="col-title">📅 Schedule &amp; Calendar</span>
+            <span class="col-badge">4 events</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="event-item" style="border-left-color: #2383e2;">
+              <span class="event-time">09:30 AM – 10:00 AM</span>
+              <span class="event-title">Morning Standup &amp; Ticket Queue</span>
+              <span class="event-meta">Google Meet · Team</span>
+            </div>
+
+            <div class="event-item" style="border-left-color: #0f9d58;">
+              <span class="event-time">11:00 AM – 11:45 AM</span>
+              <span class="event-title">Sterling Health Client Onboarding</span>
+              <span class="event-meta">Zoom · Attendees (4) · Agenda linked</span>
+            </div>
+
+            <div class="event-item" style="border-left-color: #e67e22;">
+              <span class="event-time">02:00 PM – 03:00 PM</span>
+              <span class="event-title">Q4 Strategy &amp; Board Review</span>
+              <span class="event-meta">Zoom · Briefing pack ready</span>
+            </div>
+
+            <div class="event-item" style="border-left-color: #9b59b6;">
+              <span class="event-time">04:00 PM – 05:00 PM</span>
+              <span class="event-title">Protected Focus: Follow-up Memos</span>
+              <span class="event-meta">Asynchronous</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Meeting Notes & Bookmarks -->
+        <div class="col-card">
+          <div class="col-header">
+            <span class="col-title">📝 Briefs &amp; Bookmarks</span>
+            <span class="col-badge">Updated</span>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="toggle-item">
+              <div class="toggle-header">▶ Sterling Health Onboarding</div>
+              <div class="toggle-body">
+                &bull; Primary contact: Sophia Sterling<br>
+                &bull; Scope: CRM cleanup &amp; weekly inbox scheduling<br>
+                &bull; Status: Deliverable V1 approved
+              </div>
+            </div>
+
+            <div class="toggle-item">
+              <div class="toggle-header">▶ Executive Travel &amp; Logistics</div>
+              <div class="toggle-body">
+                &bull; Flight confirmation &amp; hotel itinerary synced<br>
+                &bull; Timezone buffer: EST / GMT configured
+              </div>
+            </div>
+
+            <div style="margin-top:6px; display:flex; flex-direction:column; gap:6px;">
+              <a href="#" class="bookmark">📄 Q4 Board Meeting Master Deck</a>
+              <a href="#" class="bookmark">📑 Executive Email Templates &amp; SOPs</a>
+              <a href="#" class="bookmark">🗂️ 2026 Vendor &amp; Contract Directory</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

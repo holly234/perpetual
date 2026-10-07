@@ -216,7 +216,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {projects.slice(0, 4).map((project) => (
+            {projects.slice(0, 5).map((project) => (
               <div key={project.slug} className="h-full">
                 <ProjectCard project={project} />
               </div>

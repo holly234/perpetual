@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/site";
 export const metadata: Metadata = createMetadata({
   title: "Selected Works — Business Solutions Built",
   description:
-    "Real projects by Olamide Titus — booking funnels, product catalogs, payment workflows and lead capture systems that solved real business problems.",
+    "Real projects by Olamide Titus — contact database sanitization, executive Notion hubs, booking funnels, product catalogs, and lead capture workflows.",
   path: "/projects"
 });
 
@@ -25,10 +25,10 @@ export default function ProjectsPage() {
           <div className="max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Selected Works</span>
             <h1 className="mt-3 text-4xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-[1.05]">
-              Business systems I&apos;ve built.
+              Operations &amp; business systems.
             </h1>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">
-              Each project below solved a real operational bottleneck — from replacing manual WhatsApp bookings to building automated lead intake funnels and payment flows.
+              Each project below solved a real operational bottleneck — from sanitizing contact databases and organizing executive Notion hubs to building automated lead funnels and payment flows.
             </p>
           </div>
         </MotionDiv>

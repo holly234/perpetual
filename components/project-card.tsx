@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/data";
 
 type Project = (typeof projects)[number];
@@ -6,9 +7,11 @@ type Project = (typeof projects)[number];
 export function ProjectCard({ project }: { project: Project }) {
   const displayTitle = project.title.replace(/\s+demo$/i, "");
   const screenshot = project.image || `/project-screenshots/${project.slug}/1.jpg`;
+  const isVADeliverable = project.slug === "client-lead-cleanup" || project.slug === "executive-notion-hub";
+  const hasExternalLink = Boolean(project.liveUrl && project.liveUrl.startsWith("http") && !isVADeliverable);
 
   return (
-    <article className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200">
+    <article className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200">
       {/* Top Preview Showcase Container (Soft Sand/Gray Inset Pad) */}
       <div className="relative mb-5 w-full overflow-hidden rounded-xl bg-[#f4f3ee] p-3.5 sm:p-4 aspect-[16/10] flex items-center justify-center">
         <div className="relative w-full h-full overflow-hidden rounded-lg bg-white shadow-[0_2px_8px_rgba(0,0,0,0.06)] border border-slate-200/60">
@@ -23,22 +26,41 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Card Info & Details */}
-      <div className="flex flex-1 flex-col">
-        <h3 className="text-xl sm:text-2xl font-normal text-slate-900 tracking-tight leading-snug">
-          {displayTitle}
-        </h3>
+      <div className="flex flex-1 flex-col justify-between">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-normal text-slate-900 tracking-tight leading-snug">
+            {displayTitle}
+          </h3>
 
-        <p className="mt-1 text-xs text-slate-400 font-normal">
-          {project.operationsLabel || project.category}
-        </p>
+          <p className="mt-1 text-xs text-slate-400 font-normal">
+            {project.operationsLabel || project.category}
+          </p>
 
-        <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-500">
-          {project.businessImpact || project.summary}
-        </p>
+          <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-500 line-clamp-2">
+            {project.businessImpact || project.summary}
+          </p>
+        </div>
+
+        {/* Action Button: Present on live website systems; omitted on internal VA document samples */}
+        {hasExternalLink && (
+          <div className="mt-6">
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
+              id={`project-link-${project.slug}`}
+            >
+              <span>View live website</span>
+              <ArrowUpRight size={13} strokeWidth={2} />
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );
 }
+
 
 
 

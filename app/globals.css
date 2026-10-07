@@ -34,43 +34,6 @@ a {
   margin-right: 5%;
 }
 
-/* Floating Right Social Dock (matching Inspiration Image 1) */
-.floating-social-bar {
-  position: fixed;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 40;
-  display: none;
-  flex-direction: column;
-  gap: 0.6rem;
-}
 
-@media (min-width: 1280px) {
-  .floating-social-bar {
-    display: flex;
-  }
-}
-
-.social-dock-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  border-radius: 9999px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  color: #475569;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 180ms ease;
-}
-
-.social-dock-btn:hover {
-  color: #0f172a;
-  border-color: #94a3b8;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
 
 

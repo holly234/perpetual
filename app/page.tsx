@@ -22,62 +22,16 @@ export default function HomePage() {
     <main className="min-h-screen bg-white text-slate-900">
       <StructuredData data={professionalServiceSchema("/")} />
 
-      {/* ── 1. HERO SECTION (Exact Match to User Inspo Screenshot) ── */}
-      <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-28">
-        <div className="w-[90%] mx-[5%]">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-
-            {/* Left Column: Avatar + Hello! I'm Olamide Titus */}
-            <div>
-              <div className="relative w-14 h-14 rounded-full overflow-hidden mb-8 border border-slate-200 shadow-xs">
-                <Image
-                  src="/assets/profile.jpg"
-                  alt="Olamide Titus"
-                  fill
-                  priority
-                  quality={95}
-                  className="object-cover object-top"
-                />
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-[1.1]">
-                Hello! I&apos;m Olamide <br />
-                Titus
-              </h1>
-            </div>
-
-            {/* Right Column: Title + Subtitle + Buttons */}
-            <div className="lg:pt-2">
-              <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-slate-900 leading-snug">
-                An Operations &amp; Support Specialist based in Nigeria.
-              </h2>
-              <p className="mt-3.5 text-xs sm:text-sm text-slate-500 font-normal">
-                Passionate about scaling customer support, inbox zero, and reliable web workflows for global teams.
-              </p>
-
-              <div className="mt-7 flex items-center gap-3">
-                <a
-                  href={siteConfig.social.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-xl bg-black px-6 py-2.5 text-xs sm:text-sm font-medium !text-white hover:bg-slate-800 transition"
-                  id="hero-whatsapp-cta"
-                >
-                  Talk with me
-                </a>
-
-                <Link
-                  href="#works"
-                  className="rounded-xl border border-slate-200 bg-white px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-800 hover:bg-slate-50 transition"
-                  id="hero-see-work"
-                >
-                  See my work
-                </Link>
-              </div>
-            </div>
-
-          </div>
-        </div>
+      {/* ── 1. HERO SECTION (80vh Desktop / 100vh Mobile Image Background) ── */}
+      <section className="relative w-full h-[100dvh] min-h-[100dvh] lg:h-[80vh] lg:min-h-[80vh] overflow-hidden bg-white">
+        <Image
+          src="/assets/profile.jpg"
+          alt="Hero Background"
+          fill
+          priority
+          quality={95}
+          className="object-cover object-[center_20%]"
+        />
       </section>
 
       {/* ── 2. WORKING EXPERIENCE & WORK READINESS (Exact Match to Image 1) ── */}

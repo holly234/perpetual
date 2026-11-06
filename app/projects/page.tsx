@@ -5,13 +5,17 @@ import { projects } from "@/lib/data";
 import { createMetadata } from "@/lib/site";
 
 export const metadata: Metadata = createMetadata({
-  title: "Selected Works — Business Solutions Built",
+  title: "Selected Works — Web & Mobile Solutions Built",
   description:
-    "Real projects by Olamide Titus — contact database sanitization, executive Notion hubs, booking funnels, product catalogs, and lead capture workflows.",
+    "Real web development projects by Olamide Titus — booking funnels, product catalogs, and service lead capture systems.",
   path: "/projects"
 });
 
 export default function ProjectsPage() {
+  const webProjects = projects.filter(
+    (p) => p.slug !== "client-lead-cleanup" && p.slug !== "executive-notion-hub"
+  );
+
   return (
     <main className="projects-screen py-8 sm:py-12">
       <section className="container-page">
@@ -24,11 +28,11 @@ export default function ProjectsPage() {
         >
           <div className="max-w-3xl">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Selected Works</span>
-            <h1 className="mt-3 text-4xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-[1.05]">
-              Operations &amp; business systems.
+            <h1 className="mt-3 text-4xl sm:text-5xl font-medium tracking-tight text-slate-900 leading-[1.1]">
+              Web &amp; mobile systems.
             </h1>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-600">
-              Each project below solved a real operational bottleneck — from sanitizing contact databases and organizing executive Notion hubs to building automated lead funnels and payment flows.
+              Each platform below was engineered for real customer conversion — from automated vehicle reservations and local service booking to catalog checkout flows.
             </p>
           </div>
         </MotionDiv>
@@ -36,7 +40,7 @@ export default function ProjectsPage() {
 
       <section className="py-10 sm:py-14">
         <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+          {webProjects.map((project, index) => (
             <MotionDiv
               key={project.slug}
               className="h-full"

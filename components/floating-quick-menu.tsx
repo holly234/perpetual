@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Briefcase, Clock, Mail, MessageCircle, Download, X, Sparkles } from "lucide-react";
+import { Briefcase, Layers, Mail, MessageCircle, HelpCircle, X, Sparkles } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
 import { siteConfig } from "@/lib/site";
 
@@ -11,7 +11,6 @@ interface QuickLinkItem {
   href: string;
   icon: React.ReactNode;
   isExternal?: boolean;
-  isDownload?: boolean;
 }
 
 const quickLinks: QuickLinkItem[] = [
@@ -21,9 +20,14 @@ const quickLinks: QuickLinkItem[] = [
     icon: <Briefcase size={16} strokeWidth={1.8} />
   },
   {
-    label: "Experience",
-    href: "/#superpowers",
-    icon: <Clock size={16} strokeWidth={1.8} />
+    label: "Services",
+    href: "/#services",
+    icon: <Layers size={16} strokeWidth={1.8} />
+  },
+  {
+    label: "FAQ",
+    href: "/#faq",
+    icon: <HelpCircle size={16} strokeWidth={1.8} />
   },
   {
     label: "LinkedIn",
@@ -42,13 +46,6 @@ const quickLinks: QuickLinkItem[] = [
     href: `mailto:${siteConfig.email}`,
     icon: <Mail size={16} strokeWidth={1.8} />,
     isExternal: true
-  },
-  {
-    label: "Download CV",
-    href: siteConfig.cv,
-    icon: <Download size={16} strokeWidth={1.8} />,
-    isExternal: true,
-    isDownload: true
   }
 ];
 
@@ -115,9 +112,8 @@ export function FloatingQuickMenu() {
               <a
                 key={item.label}
                 href={item.href}
-                target={item.isDownload ? undefined : "_blank"}
-                rel={item.isDownload ? undefined : "noreferrer"}
-                download={item.isDownload ? true : undefined}
+                target="_blank"
+                rel="noreferrer"
                 onClick={() => setIsOpen(false)}
                 className={className}
                 style={{
@@ -154,7 +150,6 @@ export function FloatingQuickMenu() {
         className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white shadow-[0_6px_25px_rgba(0,0,0,0.3)] transition-all duration-300 hover:bg-black hover:scale-110 active:scale-95 focus:outline-hidden focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
         id="floating-quick-menu-trigger"
       >
-        {/* Subtle pulsing live indicator dot when closed to draw immediate eye attention */}
         {!isOpen && (
           <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

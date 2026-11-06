@@ -6,13 +6,8 @@ type Project = (typeof projects)[number];
 
 export function ProjectCard({ project }: { project: Project }) {
   const displayTitle = project.title.replace(/\s+demo$/i, "");
-  const isVADeliverable = project.slug === "client-lead-cleanup" || project.slug === "executive-notion-hub";
-  const screenshot = isVADeliverable
-    ? (project.slug === "client-lead-cleanup"
-        ? "/project-screenshots/client-lead-cleanup/spreadsheet-clean.png"
-        : "/project-screenshots/executive-notion-hub/notion-workspace.png")
-    : `/project-screenshots/${project.slug}/1.jpg`;
-  const hasExternalLink = Boolean(project.liveUrl && project.liveUrl.startsWith("http") && !isVADeliverable);
+  const screenshot = `/project-screenshots/${project.slug}/1.jpg`;
+  const hasExternalLink = Boolean(project.liveUrl && project.liveUrl.startsWith("http"));
 
   return (
     <article className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 sm:p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all duration-200">
@@ -29,34 +24,34 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      {/* Card Info & Details */}
+      {/* Card Info & Details with Balanced, Legible Font Sizes */}
       <div className="flex flex-1 flex-col justify-between">
         <div>
-          <h3 className="text-xl sm:text-2xl font-normal text-slate-900 tracking-tight leading-snug">
+          <h3 className="text-xl sm:text-2xl font-medium text-slate-900 tracking-tight leading-snug">
             {displayTitle}
           </h3>
 
-          <p className="mt-1 text-xs text-slate-400 font-normal">
+          <p className="mt-1.5 text-sm text-slate-500 font-normal">
             {project.operationsLabel || project.category}
           </p>
 
-          <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-500 line-clamp-2">
+          <p className="mt-3 text-sm sm:text-base font-normal leading-relaxed text-slate-600 line-clamp-2">
             {project.businessImpact || project.summary}
           </p>
         </div>
 
-        {/* Action Button: Present on live website systems; omitted on internal VA document samples */}
+        {/* Action Button */}
         {hasExternalLink && (
           <div className="mt-6">
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-black px-4 py-2 text-xs font-medium !text-white hover:bg-slate-800 transition"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-black px-5 py-2.5 text-sm font-medium !text-white hover:bg-slate-800 transition shadow-xs"
               id={`project-link-${project.slug}`}
             >
               <span>View live website</span>
-              <ArrowUpRight size={13} strokeWidth={2} />
+              <ArrowUpRight size={14} strokeWidth={2} />
             </a>
           </div>
         )}
@@ -64,7 +59,3 @@ export function ProjectCard({ project }: { project: Project }) {
     </article>
   );
 }
-
-
-
-

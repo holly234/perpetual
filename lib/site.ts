@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Olamide Titus",
   legalName: "Olamide Titus",
   description:
-    "Olamide Titus is an Operations & Support Specialist delivering fast customer care, executive admin support, and web system automation for remote teams worldwide.",
+    "Web & Mobile Developer. High-converting contractor funnels, seasonal landing pages, and web systems.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://perpetualdevs.com",
   email: "olamidetituswork@gmail.com",
   phone: "07039742741",
@@ -13,10 +13,12 @@ export const siteConfig = {
   cv: "/assets/olamide-titus-cv.pdf",
   social: {
     linkedin: "https://www.linkedin.com/in/olamide-titus",
-    whatsapp: "https://wa.me/2347039742741"
+    whatsapp: "https://wa.me/2347039742741",
+    instagram: "https://www.instagram.com/olamidetitus",
+    facebook: "https://www.facebook.com/olamidetitus"
   },
-  tagline: "Operations & Support Specialist",
-  markets: ["United States", "United Kingdom", "Canada", "Australia", "Germany", "Worldwide"]
+  tagline: "Web & Mobile Developer",
+  markets: ["United States", "United Kingdom", "Canada", "Australia", "Worldwide"]
 };
 
 export function absoluteUrl(path = "/") {
@@ -70,4 +72,3 @@ export function createMetadata({
     }
   };
 }
-

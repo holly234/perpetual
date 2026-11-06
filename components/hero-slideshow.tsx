@@ -8,40 +8,40 @@ import { siteConfig } from "@/lib/site";
 const slides = [
   {
     id: "christmas-lights",
-    image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1920&q=80",
-    alt: "Christmas Light Installation",
+    image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1920&q=80",
+    alt: "House covered in Christmas lights and decorations",
     title: "Christmas Light Installation Sites",
     subtitle: "High-ticket residential & commercial roofline funnels ready in 48 hours.",
     cta: "Launch your lighting site"
   },
   {
-    id: "hvac-heating",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80",
-    alt: "HVAC and Building Heating Services",
+    id: "christmas-house-2",
+    image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1920&q=80",
+    alt: "American house with Christmas lights at night",
     title: "Winter HVAC & Heating Pages",
     subtitle: "Emergency furnace repair & seasonal tune-up tap-to-call booking funnels.",
     cta: "Launch your HVAC site"
   },
   {
-    id: "snow-removal",
+    id: "snow-house",
     image: "https://images.unsplash.com/photo-1547754980-3df97fed72a8?auto=format&fit=crop&w=1920&q=80",
-    alt: "Snow Removal and Ice Plowing",
+    alt: "House covered in snow with Christmas lights",
     title: "Snow Removal & Ice Hubs",
     subtitle: "Driveway plowing & commercial winter contract signups with instant quote capture.",
     cta: "Launch your snow site"
   },
   {
-    id: "festive-sales",
+    id: "festive-street",
     image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1920&q=80",
-    alt: "Festive Holiday Sales E-Commerce",
+    alt: "Festive house exterior with lights at night",
     title: "Holiday E-Commerce Stores",
     subtitle: "Fast product catalogs, seasonal drops & direct DM checkout flows.",
     cta: "Launch your online store"
   },
   {
-    id: "gutter-roofing",
+    id: "christmas-lights-5",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80",
-    alt: "Gutter Cleaning and Exterior Care",
+    alt: "White American home with Christmas light display on roof",
     title: "Gutter Cleaning & Shield Sites",
     subtitle: "Pre-winter debris clearing & gutter guard funnels for exterior contractors.",
     cta: "Launch your gutter site"
@@ -106,17 +106,25 @@ export function HeroSlideshow() {
             {activeSlide.subtitle}
           </p>
 
-          {/* ONE SINGLE PURPOSEFUL CTA BUTTON */}
-          <div className="mt-6 flex items-center">
+          {/* CTA — Facebook + Instagram DM */}
+          <div className="mt-6 flex items-center gap-3 flex-wrap">
             <a
-              href={`${siteConfig.social.instagram}`}
+              href={siteConfig.social.messenger}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-medium !text-slate-950 hover:bg-slate-200 transition shadow-lg active:scale-95"
-              id="hero-ig-cta"
+              id="hero-fb-cta"
             >
               <span>{activeSlide.cta}</span>
               <ArrowRight size={15} />
+            </a>
+            <a
+              href={siteConfig.social.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-white/20 border border-white/40 px-5 py-3.5 text-sm font-medium !text-white hover:bg-white/30 transition backdrop-blur-sm active:scale-95"
+            >
+              Instagram DM
             </a>
           </div>
 

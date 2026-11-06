@@ -163,17 +163,25 @@ export function SeasonSwitchPreview() {
               </li>
             </ul>
 
-            <div className="mt-8 pt-6 border-t border-slate-100">
+            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col gap-2.5">
               <a
-                href={siteConfig.social.instagram}
+                href={siteConfig.social.messenger}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-black px-6 py-3.5 text-sm font-medium !text-white hover:bg-slate-800 transition shadow-xs"
               >
-                <span>DM me on Instagram</span>
+                <span>DM me on Facebook</span>
                 <ArrowRight size={15} />
               </a>
-              <p className="text-center text-xs text-slate-400 mt-2.5">
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-slate-800 hover:bg-slate-50 transition"
+              >
+                or Instagram DM
+              </a>
+              <p className="text-center text-xs text-slate-400">
                 48-hr delivery · No monthly fees
               </p>
             </div>

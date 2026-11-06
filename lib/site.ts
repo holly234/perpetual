@@ -14,8 +14,9 @@ export const siteConfig = {
   social: {
     linkedin: "https://www.linkedin.com/in/olamide-titus",
     whatsapp: "https://wa.me/2347039742741",
-    instagram: "https://www.instagram.com/olamidetitus",
-    facebook: "https://www.facebook.com/olamidetitus"
+    instagram: "https://ig.me/m/petloversconnect",
+    facebook: "https://www.facebook.com/share/14wm46DzzWH/",
+    messenger: "https://www.facebook.com/share/14wm46DzzWH/"
   },
   tagline: "Web & Mobile Developer",
   markets: ["United States", "United Kingdom", "Canada", "Australia", "Worldwide"]

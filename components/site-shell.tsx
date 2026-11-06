@@ -18,6 +18,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <a href="#services" className="hover:text-slate-900 transition">Services</a>
             <a href="#works" className="hover:text-slate-900 transition">Works</a>
             <a href="#faq" className="hover:text-slate-900 transition">FAQ</a>
+            <a href={siteConfig.social.messenger} target="_blank" rel="noreferrer" className="hover:text-slate-900 transition">Facebook</a>
             <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" className="hover:text-slate-900 transition">Instagram</a>
           </div>
 

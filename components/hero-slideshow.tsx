@@ -8,40 +8,40 @@ import { siteConfig } from "@/lib/site";
 const slides = [
   {
     id: "christmas-lights",
-    image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1920&q=80",
-    alt: "House covered in Christmas lights and decorations",
+    image: "/assets/hero/christmas-lights.jpg",
+    alt: "Beautiful American house with professional Christmas lights installed on roofline at night",
     title: "Christmas Light Installation Sites",
     subtitle: "High-ticket residential & commercial roofline funnels ready in 48 hours.",
     cta: "Launch your lighting site"
   },
   {
-    id: "christmas-house-2",
-    image: "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1920&q=80",
-    alt: "American house with Christmas lights at night",
+    id: "hvac-heating",
+    image: "/assets/hero/hvac.jpg",
+    alt: "HVAC technician servicing a furnace heating unit",
     title: "Winter HVAC & Heating Pages",
     subtitle: "Emergency furnace repair & seasonal tune-up tap-to-call booking funnels.",
     cta: "Launch your HVAC site"
   },
   {
-    id: "snow-house",
-    image: "https://images.unsplash.com/photo-1547754980-3df97fed72a8?auto=format&fit=crop&w=1920&q=80",
-    alt: "House covered in snow with Christmas lights",
+    id: "snow-removal",
+    image: "/assets/hero/snow-removal.jpg",
+    alt: "Snow plow truck and workers clearing a large snowy residential area",
     title: "Snow Removal & Ice Hubs",
     subtitle: "Driveway plowing & commercial winter contract signups with instant quote capture.",
     cta: "Launch your snow site"
   },
   {
     id: "festive-street",
-    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1920&q=80",
-    alt: "Festive house exterior with lights at night",
+    image: "/assets/hero/ecommerce.jpg",
+    alt: "Festive holiday shopping bags and decorations",
     title: "Holiday E-Commerce Stores",
     subtitle: "Fast product catalogs, seasonal drops & direct DM checkout flows.",
     cta: "Launch your online store"
   },
   {
-    id: "christmas-lights-5",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1920&q=80",
-    alt: "White American home with Christmas light display on roof",
+    id: "gutter-cleaning",
+    image: "/assets/hero/gutter.jpg",
+    alt: "Worker on ladder cleaning leaves and debris from house roof gutter",
     title: "Gutter Cleaning & Shield Sites",
     subtitle: "Pre-winter debris clearing & gutter guard funnels for exterior contractors.",
     cta: "Launch your gutter site"
